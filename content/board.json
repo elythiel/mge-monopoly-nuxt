@@ -1,0 +1,236 @@
+{
+  "datas": [
+    {
+      "corner": "start"
+    },
+    {
+      "color": "brown",
+      "title": "Brevet",
+      "date": "2006",
+      "location": "Chaumont",
+      "details": "brevet"
+    },
+    {
+      "title": "Musique",
+      "image": {
+        "name": "ico-guitar.svg",
+        "alt": "Pictogramme guitare"
+      }
+    },
+    {
+      "color": "brown",
+      "title": "Bac<br>Scientifique",
+      "date": "2009",
+      "details": "bac"
+    },
+    {
+      "title": "Permis B",
+      "image": {
+        "name": "ico-car.svg",
+        "alt": "Pictogramme voiture"
+      }
+    },
+    {
+      "title": "Gare<br>de Dijon",
+      "image": {
+        "name": "train.png",
+        "alt": "Pictogramme train",
+        "size": "xl"
+      }
+    },
+    {
+      "color": "lightblue",
+      "title": "DUT Informatique",
+      "date": "2011"
+    },
+    {
+      "title": "Jeux vidéo",
+      "image": {
+        "name": "ico-ghost.svg",
+        "alt": "Pictogramme fantôme"
+      }
+    },
+    {
+      "color": "lightblue",
+      "title": "Stage<br>APRR",
+      "date": "4 mois"
+    },
+    {
+      "color": "lightblue",
+      "title": "Licence Pro<br/><span class=\"text-xs\">Web / Multimédia Management & Webmaster</span>",
+      "date": "2012"
+    },
+    {
+      "corner": "jail"
+    },
+    {
+      "color": "pink",
+      "title": "Master en stratégie digitale",
+      "date": "2014"
+    },
+    {
+      "title": "Expérience<br/><span class=\"text-xs\">Entrepreneuriale",
+      "image": {
+        "name": "ico-entrepreneur.svg",
+        "alt": "Pictogramme personne et ordinateur"
+      }
+    },
+    {
+      "color": "pink",
+      "title": "BNP Paribas Investment Partners<br/><span class=\"text-xs\">Intranet</span>",
+      "date": "1 an"
+    },
+    {
+      "color": "pink",
+      "title": "BNP Paribas Investment Partners<br/><span class=\"text-xs\">Internet</span>",
+      "date": "2 ans"
+    },
+    {
+      "title": "Gare<br/>Montparnasse",
+      "image": {
+        "name": "train.png",
+        "alt": "Pictogramme train",
+        "size": "xl"
+      }
+    },
+    {
+      "color": "orange",
+      "title": "Amundi",
+      "date": "10 mois"
+    },
+    {
+      "title": "Montage vidéo",
+      "image": {
+        "name": "ico-film.svg",
+        "alt": "Pictogramme fichier vidéo"
+      }
+    },
+    {
+      "color": "orange",
+      "title": "Société Générale",
+      "date": "10 mois"
+    },
+    {
+      "color": "orange",
+      "title": "Engie",
+      "date": "2 mois",
+      "details": "engie"
+    },
+    {
+      "corner": "parking"
+    },
+    {
+      "color": "red",
+      "title": "BMW",
+      "date": "10 mois"
+    },
+    {
+      "title": "Sensations fortes",
+      "image": {
+        "name": "ico-parachute.svg",
+        "alt": "Pictogramme parachutiste"
+      }
+    },
+    {
+      "color": "red",
+      "title": "CA<br>Private<br>Banking",
+      "date": "1 an"
+    },
+    {
+      "color": "red",
+      "title": "CA",
+      "date": "4 mois",
+      "details": "ca"
+    },
+    {
+      "title": "Gare<br/>Nantes Nord",
+      "image": {
+        "name": "train.png",
+        "alt": "Pictogramme train",
+        "size": "xl"
+      }
+    },
+    {
+      "color": "yellow",
+      "title": "SQLI Projets internes",
+      "date": "2 mois"
+    },
+    {
+      "color": "yellow",
+      "title": "CEGID",
+      "date": "3 mois"
+    },
+    {
+      "title": "Maître de stage",
+      "image": {
+        "name": "ico-cup.svg",
+        "alt": "Pictogramme tasse à café"
+      }
+    },
+    {
+      "color": "yellow",
+      "title": "CCI SAINT-NAZAIRE",
+      "date": "10 mois",
+      "details": "cci-saint-nazaire"
+    },
+    {
+      "corner": "policeman"
+    },
+    {
+      "color": "green",
+      "title": "RMA",
+      "date": "9 mois"
+    },
+    {
+      "color": "green",
+      "title": "RTE<br>Nova<br>& Galion",
+      "date": "5 mois"
+    },
+    {
+      "title": "Agilité",
+      "image": {
+        "name": "ico-post-it.svg",
+        "alt": "Pictogramme post-it",
+        "size": "xl"
+      }
+    },
+    {
+      "color": "green",
+      "title": "RTE<br>Cortex",
+      "date": "1 an"
+    },
+    {
+      "title": "Gare<br/>Nantes Sud",
+      "image": {
+        "name": "train.png",
+        "alt": "Pictogramme train",
+        "size": "xl"
+      }
+    },
+    {
+      "title": "Travaux",
+      "image": {
+        "name": "ico-works.svg",
+        "alt": "Pictogramme grue de chantier",
+        "size": "lg"
+      }
+    },
+    {
+      "color": "blue",
+      "title": "IBP",
+      "date": "1 an"
+    },
+    {
+      "title": "Projet<br>Jeu de société",
+      "image": {
+        "name": "ico-dice.svg",
+        "alt": "Pictogramme dé"
+      }
+    },
+    {
+      "color": "blue",
+      "title": "CBP",
+      "date": "En cours"
+    }
+  ]
+}

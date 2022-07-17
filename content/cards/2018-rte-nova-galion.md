@@ -1,0 +1,16 @@
+### Chef de projet Web
+
+Réalisation de versions évolutives pour les projets NOVA et GALION visant à gérer des flux de données
+
+- Gestion de projets au forfait en mode cycle en V
+- Management d’équipes (3 pers.)
+- Rédaction des spécifications fonctionnelles
+- Animation des comités projets
+- Mise en place et ajustement du planning en fonction des besoins
+- Suivi et revue des risques et des indicateurs
+- Amélioration de la qualité du projet
+- Gestion et suivi des anomalies
+
+::skills
+Java 8, JSP, Git, Mantis, Sonar
+::

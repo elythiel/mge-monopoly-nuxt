@@ -1,14 +1,11 @@
 {
-  "datas": [
-    {
-      "corner": "start"
-    },
+  "board": [
     {
       "color": "brown",
       "title": "Brevet",
-      "date": "2006",
+      "period": "2006",
       "location": "Chaumont",
-      "details": "brevet"
+      "content": "2006-brevet"
     },
     {
       "title": "Musique",
@@ -19,9 +16,10 @@
     },
     {
       "color": "brown",
-      "title": "Bac<br>Scientifique",
-      "date": "2009",
-      "details": "bac"
+      "title": "Bac Scientifique",
+      "period": "2009",
+      "location": "Chaumont",
+      "content": "2009-bac"
     },
     {
       "title": "Permis B",
@@ -31,7 +29,7 @@
       }
     },
     {
-      "title": "Gare<br>de Dijon",
+      "title": "Gare de Dijon",
       "image": {
         "name": "train.png",
         "alt": "Pictogramme train",
@@ -41,7 +39,9 @@
     {
       "color": "lightblue",
       "title": "DUT Informatique",
-      "date": "2011"
+      "period": "2011",
+      "location": "Dijon",
+      "content": "2011-dut-informatique"
     },
     {
       "title": "Jeux vidéo",
@@ -52,24 +52,28 @@
     },
     {
       "color": "lightblue",
-      "title": "Stage<br>APRR",
-      "date": "4 mois"
+      "title": "Stage APRR",
+      "period": "4 mois",
+      "location": "Dijon",
+      "footer": "2011",
+      "content": "2011-stage-aprr"
     },
     {
       "color": "lightblue",
-      "title": "Licence Pro<br/><span class=\"text-xs\">Web / Multimédia Management & Webmaster</span>",
-      "date": "2012"
-    },
-    {
-      "corner": "jail"
+      "title": "Licence Pro <br><small>Web / Multimédia Management & Webmaster</small>",
+      "period": "2012",
+      "location": "Montrouge",
+      "content": "2012-licence"
     },
     {
       "color": "pink",
       "title": "Master en stratégie digitale",
-      "date": "2014"
+      "period": "2014",
+      "location": "Paris",
+      "content": "2014-master"
     },
     {
-      "title": "Expérience<br/><span class=\"text-xs\">Entrepreneuriale",
+      "title": "Expérience<br/><small>Entrepreneuriale</small>",
       "image": {
         "name": "ico-entrepreneur.svg",
         "alt": "Pictogramme personne et ordinateur"
@@ -77,13 +81,21 @@
     },
     {
       "color": "pink",
-      "title": "BNP Paribas Investment Partners<br/><span class=\"text-xs\">Intranet</span>",
-      "date": "1 an"
+      "title": "BNP Paribas Investment Partners<br/><small>Intranet</small>",
+      "period": "1 an",
+      "duration": "1 an",
+      "location": "Paris",
+      "footer": "Sept. 2011 - Sept. 2012",
+      "content": "2011-bnp-intranet"
     },
     {
       "color": "pink",
-      "title": "BNP Paribas Investment Partners<br/><span class=\"text-xs\">Internet</span>",
-      "date": "2 ans"
+      "title": "BNP Paribas Investment Partners<br/><small>Internet</small>",
+      "period": "2 ans",
+      "duration": "2 ans",
+      "location": "Paris",
+      "footer": "Sept. 2012 - Sept. 2014",
+      "content": "2012-bnp-internet"
     },
     {
       "title": "Gare<br/>Montparnasse",
@@ -96,7 +108,11 @@
     {
       "color": "orange",
       "title": "Amundi",
-      "date": "10 mois"
+      "period": "10 mois",
+      "duration": "10 mois",
+      "location": "Paris",
+      "footer": "Déc. 2014 - Sept. 2015",
+      "content": "2014-amundi"
     },
     {
       "title": "Montage vidéo",
@@ -108,21 +124,29 @@
     {
       "color": "orange",
       "title": "Société Générale",
-      "date": "10 mois"
+      "period": "10 mois",
+      "duration": "10 mois",
+      "location": "Paris",
+      "footer": "Déc. 2014 - Sept. 2015",
+      "content": "2014-societe-generale"
     },
     {
       "color": "orange",
       "title": "Engie",
-      "date": "2 mois",
-      "details": "engie"
-    },
-    {
-      "corner": "parking"
+      "period": "2 mois",
+      "duration": "2 mois",
+      "location": "Paris",
+      "footer": "Oct. 2015 - Nov. 2015",
+      "content": "2015-engie"
     },
     {
       "color": "red",
       "title": "BMW",
-      "date": "10 mois"
+      "period": "10 mois",
+      "duration": "10 mois",
+      "location": "St-Denis",
+      "footer": "Déc. 2015 - Sept. 2016",
+      "content": "2015-bmw"
     },
     {
       "title": "Sensations fortes",
@@ -133,17 +157,26 @@
     },
     {
       "color": "red",
-      "title": "CA<br>Private<br>Banking",
-      "date": "1 an"
+      "title": "CA Private Banking",
+      "header": "Crédit Agricole Private Banking",
+      "period": "1 an",
+      "duration": "1 an",
+      "location": "Paris",
+      "footer": "Nov. 2015 - Déc. 2016",
+      "content": "2015-ca-private-banking"
     },
     {
       "color": "red",
       "title": "CA",
-      "date": "4 mois",
-      "details": "ca"
+      "header": "Crédit Agricole",
+      "period": "4 mois",
+      "duration": "4 mois",
+      "location": "Paris",
+      "footer": "Sept. 2016 - Déc. 2016",
+      "content": "2016-credit-agricole"
     },
     {
-      "title": "Gare<br/>Nantes Nord",
+      "title": "Gare Nantes Nord",
       "image": {
         "name": "train.png",
         "alt": "Pictogramme train",
@@ -153,12 +186,20 @@
     {
       "color": "yellow",
       "title": "SQLI Projets internes",
-      "date": "2 mois"
+      "period": "2 mois",
+      "duration": "2 mois",
+      "location": "La Chapelle-sur-Erdre",
+      "footer": "Jan. 2017 - Fév. 2017",
+      "content": "2017-sqli-projets-internes"
     },
     {
       "color": "yellow",
       "title": "CEGID",
-      "date": "3 mois"
+      "period": "3 mois",
+      "duration": "3 mois",
+      "footer": "Mars. 2017 - Juil. 2017",
+      "location": "St-Herblain",
+      "content": "2017-cegid"
     },
     {
       "title": "Maître de stage",
@@ -170,21 +211,29 @@
     {
       "color": "yellow",
       "title": "CCI SAINT-NAZAIRE",
-      "date": "10 mois",
-      "details": "cci-saint-nazaire"
-    },
-    {
-      "corner": "policeman"
+      "period": "10 mois",
+      "duration": "10 mois",
+      "location": "Nantes",
+      "footer": "Août 2017 - Mai 2018",
+      "content": "2017-cci-saint-nazaire"
     },
     {
       "color": "green",
       "title": "RMA",
-      "date": "9 mois"
+      "period": "9 mois",
+      "duration": "9 mois",
+      "location": "Vertou",
+      "footer": "Oct. 2017 - Juin 2018",
+      "content": "2017-rma"
     },
     {
       "color": "green",
-      "title": "RTE<br>Nova<br>& Galion",
-      "date": "5 mois"
+      "title": "RTE <br> Nova & Galion",
+      "period": "5 mois",
+      "duration": "5 mois",
+      "location": "Nantes",
+      "footer": "Juin 2018 - Oct. 2018",
+      "content": "2018-rte-nova-galion"
     },
     {
       "title": "Agilité",
@@ -196,11 +245,15 @@
     },
     {
       "color": "green",
-      "title": "RTE<br>Cortex",
-      "date": "1 an"
+      "title": "RTE Cortex",
+      "period": "1 an",
+      "duration": "1 an",
+      "location": "Nantes",
+      "footer": "Sept. 2018 - Sept. 2019",
+      "content": "2018-rte-cortex"
     },
     {
-      "title": "Gare<br/>Nantes Sud",
+      "title": "Gare Nantes Sud",
       "image": {
         "name": "train.png",
         "alt": "Pictogramme train",
@@ -218,10 +271,15 @@
     {
       "color": "blue",
       "title": "IBP",
-      "date": "1 an"
+      "header": "Informatique Banque Populaire",
+      "period": "1 an",
+      "duration": "1 an",
+      "location": "St-Herblain",
+      "footer": "Déc. 2019 - Fév. 2020",
+      "content": "2019-ibp"
     },
     {
-      "title": "Projet<br>Jeu de société",
+      "title": "Projet Jeu de société",
       "image": {
         "name": "ico-dice.svg",
         "alt": "Pictogramme dé"
@@ -230,7 +288,10 @@
     {
       "color": "blue",
       "title": "CBP",
-      "date": "En cours"
+      "period": "En cours",
+      "location": "St-Herblain",
+      "footer": "Avr. 2021 - Aujourd'hui",
+      "content": "2021-cbp"
     }
   ]
 }

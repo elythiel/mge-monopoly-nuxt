@@ -1,0 +1,33 @@
+### Apprentissage - Chef de projet & Concepteur Réalisateur Multimédia
+
+Gestion de projets marketing dont principalement des conférences officielles bi-mensuelles retransmises en direct
+
+- Étude des besoins
+- Mise en place et suivi du planning
+- Rédaction de cahiers des charges
+- Mise en relation, promotion
+
+Gestion de blogs officiels
+
+- Étude des besoins
+- Définition des objectifs et plannings
+- Création graphique et développement
+- Rédaction de documents techniques et guides utilisateurs
+- Maintenance du site
+
+Création, gestion et animation des sites du groupe et des partenaires
+
+- Lancement de produits
+- Mise en place de campagnes
+- Création de benchmarks et wireframes
+- Support
+
+Création graphique et développement
+
+- Création de bannières publicitaires
+- Flat design pour des tables tactiles
+- Création d’e-mailings et newsletters
+
+::skills
+Adobe Photoshop, Captivate, Flash, Premiere Pro, WordPress, TeamSite, TypePad, Typo 3
+::

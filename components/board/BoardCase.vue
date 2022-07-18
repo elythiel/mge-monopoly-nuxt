@@ -7,7 +7,7 @@
          :class="'shadow-board basis-3/12 bg-mge-' + content.color"
     ></div>
     <div class="flex-grow flex flex-col justify-between items-center p-2">
-      <h4 class="uppercase text-center" v-html="content.title"></h4>
+      <p class="uppercase text-center" v-html="content.title"></p>
       <div v-if="content.period"
            class="text-center">
         {{ content.period }}
@@ -52,9 +52,9 @@ function closeCard() {
 }
 
 function getImageSize(image) {
-  switch (image) {
+  switch (image.size) {
     case 'xl':
-      return 'max-w-[5vw] max-h-[5vw]';
+      return 'max-w-[6vw] max-h-[6vw]';
     case 'lg':
       return 'max-w-[6vw] max-h-[6vw]';
     default:
@@ -62,3 +62,10 @@ function getImageSize(image) {
   }
 }
 </script>
+
+<style scoped>
+.board-case:deep(small) {
+  @apply block;
+  font-size: 0.6em;
+}
+</style>

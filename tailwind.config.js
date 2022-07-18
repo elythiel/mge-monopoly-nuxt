@@ -63,9 +63,7 @@ module.exports = {
                 184: '46rem'
             },
             rotate: {
-                8: '8deg',
-                270: '270deg',
-                360: '360deg'
+                8: '8deg'
             },
             scale: {
                 '300': '3'

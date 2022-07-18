@@ -6,7 +6,7 @@
         Contact
       </h2>
       <div class="m-auto w-4/5 text-base lg:text-xl lg:w-2/5 2xl:w-1/3 2xl:text-2xl">
-        <form ref="form" name="contact" method="POST" class="origin-top" @submit="send">
+        <form ref="form" name="contact" method="POST" class="origin-top" @submit="send" data-netlify-recaptcha="true">
           <input type="hidden" name="form-name" value="contact" />
           <p class="hidden">
             <label>Don’t fill this out: <input name="bot-field"></label>
@@ -41,7 +41,7 @@
           <span class="text-red-500"></span>
 
           <div class="flex flex-col lg:flex-row items-center">
-            <div class="g-recaptcha" data-sitekey="6Ld6ogkaAAAAAPGZkeFKMR_xXoCDaTkeYSUVvOa9"></div>
+            <div data-netlify-recaptcha="true"></div>
             <button type="submit" class="transition-all outline-none mt-4 lg:mt-0 lg:ml-auto p-2 2xl:p-3" title="Envoyer">
               <img src="/images/ico-plane.svg" alt="Pictogramme avion en papier" class="h-12 2xl:h-16 rotate-8"/>
             </button>

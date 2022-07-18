@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-x-hidden relative bg-white pt-20 pb-12 mb-4 lg:pt-24 lg:pb-28 lg:mb-12 2xl:pt-40 2xl:pb-28">
+  <div class="overflow-hidden relative bg-white pt-20 pb-12 mb-4 lg:pt-24 lg:pb-28 lg:mb-12 2xl:pt-40 2xl:pb-28">
     <div class="flex justify-between w-[90vw] mx-auto items-center mb-8 2xl:mb-12">
       <button type="button"
               @click="rotateBoard(-1)"

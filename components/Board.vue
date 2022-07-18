@@ -5,14 +5,17 @@
     </h2>
     <div
         class="board-grid font-josefin w-[90vw] h-[90vw] mx-auto grid grid-cols-board grid-rows-board relative uppercase text-[0.85vw]">
-      <template v-for="boardCase in data.board">
-        <BoardCase :content="boardCase" class="board-case bg-white"/>
+      <template v-for="(caseContent, index) in data.board">
+        <BoardCase ref="boardCases" :content="caseContent" class="board-case bg-white"
+                   @next-card="(event) => openNextCard(event, index)"
+                   @prev-card="(event) => openPrevCard(event, index)"
+        />
       </template>
       <!-- CORNER SQUARES -->
-      <BoardStart class="bg-white" />
-      <BoardJail class="bg-white" />
-      <BoardParking class="bg-white" />
-      <BoardPoliceman class="bg-white" />
+      <BoardStart class="bg-white"/>
+      <BoardJail class="bg-white"/>
+      <BoardParking class="bg-white"/>
+      <BoardPoliceman class="bg-white"/>
       <!-- CENTER SQUARE START -->
       <div class="board-case-center col-span-9 bg-transparent row-span-9 overflow-hidden w-full h-full">
         <div class="font-bold flex flex-col items-center justify-center -rotate-45 w-full h-full">
@@ -28,7 +31,42 @@
   </div>
 </template>
 <script setup>
+import {ref} from "vue";
+
 const {data} = await useAsyncData('cards-list', () => queryContent('/board').findOne());
+const boardCases = ref();
+
+function openNextCard(event, index) {
+  boardCases.value[index].closeCard();
+  getNextCard(index).openCard(event);
+}
+
+function openPrevCard(event, index) {
+  boardCases.value[index].closeCard();
+  getPrevCard(index).openCard(event);
+}
+
+function getNextCard(index) {
+  if (index >= data.value.board.length - 1) {
+    return getNextCard(0);
+  }
+  if (data.value.board[index + 1]?.content) {
+    return boardCases.value[index + 1];
+  }
+
+  return getNextCard(index + 1);
+}
+
+function getPrevCard(index) {
+  if (index <= 0) {
+    return getPrevCard(data.value.board.length);
+  }
+  if (data.value.board[index - 1]?.content) {
+    return boardCases.value[index - 1];
+  }
+
+  return getPrevCard(index - 1);
+}
 </script>
 
 <style scoped>
@@ -38,6 +76,7 @@ const {data} = await useAsyncData('cards-list', () => queryContent('/board').fin
 
 .board-case {
   /* bottom row */
+
   &:nth-child(1) {
     grid-area: 11 / 10 / 12 / 11;
   }
@@ -75,6 +114,7 @@ const {data} = await useAsyncData('cards-list', () => queryContent('/board').fin
   }
 
   /* left col */
+
   &:nth-child(10) {
     grid-area: 10 / 1 / 11 / 2;
   }
@@ -112,6 +152,7 @@ const {data} = await useAsyncData('cards-list', () => queryContent('/board').fin
   }
 
   /* top row */
+
   &:nth-child(19) {
     grid-area: 1 / 2 / 2 / 3;
   }
@@ -149,6 +190,7 @@ const {data} = await useAsyncData('cards-list', () => queryContent('/board').fin
   }
 
   /* right col */
+
   &:nth-child(28) {
     grid-area: 2 / 11 / 3 / 12;
   }
@@ -186,6 +228,7 @@ const {data} = await useAsyncData('cards-list', () => queryContent('/board').fin
   }
 
   /* columns elements */
+
   &:nth-child(n+10):nth-child(-n+18),
   &:nth-child(n+28):nth-child(-n+36) {
     writing-mode: vertical-rl;
@@ -198,6 +241,7 @@ const {data} = await useAsyncData('cards-list', () => queryContent('/board').fin
 
   /* top row elements */
   /* right column elements */
+
   &:nth-child(n+19):nth-child(-n+27),
   &:nth-child(n+28):nth-child(-n+36) {
     @apply rotate-180;

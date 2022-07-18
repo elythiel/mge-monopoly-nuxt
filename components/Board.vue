@@ -1,18 +1,24 @@
 <template>
-  <div class="relative bg-white pt-20 pb-12 mb-4 lg:pt-24 lg:pb-28 lg:mb-12 2xl:pt-40 2xl:pb-28">
+  <div class="overflow-x-hidden relative bg-white pt-20 pb-12 mb-4 lg:pt-24 lg:pb-28 lg:mb-12 2xl:pt-40 2xl:pb-28">
     <div class="flex justify-between w-[90vw] mx-auto items-center mb-8 2xl:mb-12">
-      <button type="button" @click="rotateBoard(-1)" class="p-2" title="Tourner le plateau">
-        <vue-feather type="rotate-ccw" stroke-width="1" size="3em"></vue-feather>
+      <button type="button"
+              @click="rotateBoard(-1)"
+              class="p-2 md:text-2xl flex items-center justify-center"
+              title="Tourner le plateau">
+        <vue-feather type="rotate-ccw" stroke-width="1" size="2em"></vue-feather>
       </button>
-      <h2 class="font-avante-titul-inline text-center text-4xl lg:text-6xl 2xl:text-7xl">
+      <h2 class="font-avante-titul-inline text-center text-2xl md:text-4xl lg:text-6xl 2xl:text-7xl">
         Mon parcours
       </h2>
-      <button type="button" @click="rotateBoard(1)" class="p-2" title="Tourner le plateau">
-        <vue-feather type="rotate-cw" stroke-width="1" size="3em"></vue-feather>
+      <button type="button"
+              @click="rotateBoard(1)"
+              class="p-2 md:text-2xl flex items-center justify-center"
+              title="Tourner le plateau">
+        <vue-feather type="rotate-cw" stroke-width="1" size="2em"></vue-feather>
       </button>
     </div>
-    <div :class="{'rotate-90': rotation === 1, 'rotate-180': rotation === 2, 'rotate-270': rotation === 3}"
-        class="board-grid font-josefin w-[90vw] h-[90vw] mx-auto grid grid-cols-board grid-rows-board relative text-[0.85vw] transition-transform">
+    <div :style="`transform: rotate(${rotation * 90}deg)`"
+         class="board-grid font-josefin w-[90vw] h-[90vw] mx-auto text-[1vw] lg:text-[0.85vw] grid grid-cols-board grid-rows-board relative transition-transform duration-500">
       <template v-for="(caseContent, index) in data.board">
         <BoardCase ref="boardCases" :content="caseContent" class="board-case bg-white"
                    @next-card="(event) => openNextCard(event, index)"
@@ -25,12 +31,13 @@
       <BoardParking class="bg-white"/>
       <BoardPoliceman class="bg-white"/>
       <!-- CENTER SQUARE START -->
-      <div class="board-case-center col-span-9 bg-transparent row-span-9 overflow-hidden w-full h-full">
+      <div class="board-case-center col-span-9 bg-transparent row-span-9 overflow-hidden w-full h-full transition-transform duration-500"
+           :style="`transform: rotate(-${rotation * 90}deg)`">
         <div class="font-bold flex flex-col items-center justify-center -rotate-45 w-full h-full">
           <h2 class="normal-case text-xs lg:text-xl 2xl:text-2xl">
             Curriculum Vitae - Morgane
           </h2>
-          <h1 class="rounded lg:rounded-lg bg-mge-darkblue text-white text-3xl px-4 pt-3 pb-1 lg:px-12 lg:pt-8 lg:pb-3 lg:text-8xl 2xl:px-16 2xl:pt-10 2xl:pb-4 2xl:text-9xl">
+          <h1 class="rounded lg:rounded-lg bg-mge-darkblue text-white text-3xl md:text-4xl lg:text-6xl px-4 pt-3 pb-1 lg:px-12 lg:pt-8 lg:pb-3 lg:text-8xl 2xl:px-16 2xl:pt-10 2xl:pb-4 2xl:text-9xl">
             GERVASONI
           </h1>
         </div>
@@ -80,11 +87,6 @@ function getPrevCard(index) {
 
 function rotateBoard(direction) {
   rotation.value = rotation.value + direction;
-  if (direction > 0 && rotation.value > 3) {
-    rotation.value = 1;
-  } else if (direction < 0 && rotation.value < 0) {
-    rotation.value = 3;
-  }
 }
 </script>
 

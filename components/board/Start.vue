@@ -1,5 +1,5 @@
 <template>
-  <div class="board-corner shadow-board w-full flex flex-col items-center justify-end relative overflow-hidden">
+  <div class="board-corner shadow-board-sm lg:shadow-board w-full flex flex-col items-center justify-end relative overflow-hidden">
     <div class="leading-normal absolute top-0 left-0 text-center w-full h-full py-[6%] px-[12%] uppercase -rotate-45">
       Découvrez <br>mon parcours chaque fois que vous passez ici
       <div class="font-bold lg:text-xl lg:mt-2">Départ</div>

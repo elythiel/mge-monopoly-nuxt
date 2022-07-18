@@ -1,5 +1,5 @@
 <template>
-  <div class="board-corner w-full justify-end relative overflow-hidden shadow-board rotate-180 uppercase">
+  <div class="board-corner w-full justify-end relative overflow-hidden shadow-board-sm lg:shadow-board rotate-180 uppercase">
     <div class="h-full w-full flex flex-col items-center -rotate-45 p-2">
       <span>Voyages</span>
       <div class="flex-grow p-1 lg:p-3">

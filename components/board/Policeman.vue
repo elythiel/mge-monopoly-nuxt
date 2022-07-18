@@ -1,5 +1,5 @@
 <template>
-  <div class="board-corner shadow-board w-full justify-end relative overflow-hidden">
+  <div class="board-corner shadow-board w-full justify-end relative overflow-hidden rotate-180 uppercase">
     <div class="h-full w-full flex flex-col items-center rotate-45 p-2">
       <span>Création</span>
       <div class="flex-grow p-1 lg:p-3">

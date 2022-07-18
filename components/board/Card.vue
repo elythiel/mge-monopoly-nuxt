@@ -6,8 +6,7 @@
     ></div>
     <div ref="element"
          class="card-wrapper font-josefin fixed w-full h-full z-50 flex items-center justify-center pointer-events-none origin-top-left">
-      <div
-          class="card p-3 2xl:p-4 portrait:h-[90vh] portrait:w-[90vw] w-[60vh] h-[90vh] rounded-lg bg-white shadow-card pointer-events-auto">
+      <div class="card p-3 2xl:p-4 portrait:h-[80vh] portrait:w-[80vw] w-[60vh] h-[90vh] rounded-lg bg-white shadow-card pointer-events-auto">
         <div class="relative flex flex-col p-4 2xl:p-5 border-2 border-black h-full">
           <div class="font-bold border-2 border-black mb-8 relative" :class="`bg-mge-${card.color}`">
             <span v-if="card.duration"
@@ -23,12 +22,15 @@
               {{ card.location }}
             </span>
           </div>
-          <div class="prose prose-card overflow-y-auto">
-            <ContentDoc v-if="card.content" :path="`cards/${card.content}`">
-              <template #not-found>
-                <p class="text-center">Expérience introuvable</p>
-              </template>
-            </ContentDoc>
+          <div ref="content" class="relative prose prose-card">
+              <ContentDoc v-if="card.content" :path="`cards/${card.content}`">
+                <template #not-found>
+                  <p class="text-center">Expérience introuvable</p>
+                </template>
+                <template #empty>
+                  <BoardCardLoader />
+                </template>
+              </ContentDoc>
           </div>
           <span v-if="card.footer || card.period"
                 class="absolute -bottom-[0.9rem] bg-white px-2 left-1/2 -translate-x-1/2 text-sm 2xl:text-base">
@@ -37,12 +39,24 @@
         </div>
       </div>
     </div>
+    <button type="button" class="fixed text-white left-0 top-1/2 -translate-y-1/2 z-50 lg:text-2xl lg:p-4"
+            title="Afficher la carte précédente"
+            @click="$emit('prevCard', $event)">
+      <vue-feather type="chevron-left" size="3em"></vue-feather>
+    </button>
+    <button type="button" class="fixed text-white right-0 top-1/2 -translate-y-1/2 z-50 lg:text-2xl lg:p-4"
+            title="Afficher la carte suivante"
+            @click="$emit('nextCard', $event)">
+      <vue-feather type="chevron-right" size="3em"></vue-feather>
+    </button>
   </div>
 </template>
 
 <script setup>
+import VueFeather from 'vue-feather';
 import {gsap} from 'gsap';
-import {nextTick} from 'vue';
+import {nextTick, ref} from 'vue';
+import PerfectScrollbar from "perfect-scrollbar";
 
 defineProps({
   card: Object
@@ -52,14 +66,24 @@ const initialized = ref(false);
 const isActive = ref(false);
 const background = ref(null);
 const element = ref(null);
+const content = ref(null);
 
 let animation = null;
+let scrollbar = null;
 
-const open = async (event) => {
+async function initialize() {
+  initialized.value = true;
+  await nextTick();
+  scrollbar = new PerfectScrollbar(content.value, {
+    wheelPropagation: false
+  });
+}
+
+async function open (event) {
   if (!initialized.value) {
-    initialized.value = true;
-    await nextTick();
+    await initialize();
   }
+  scrollbar.update();
   isActive.value = true;
   animation = gsap.timeline({delay: 0.1});
   animation.fromTo(background.value, {opacity: 0}, {opacity: 1});
@@ -70,13 +94,13 @@ const open = async (event) => {
       '<'
   );
   animation.eventCallback('onReverseComplete', () => isActive.value = false);
-};
+}
 
-const close = () => animation ? animation.reverse() : isActive.value = false;
+function close() {
+  animation ? animation.reverse() : isActive.value = false;
+}
 
-defineExpose({
-  open
-});
+defineExpose({open, close});
 </script>
 
 <style scoped>

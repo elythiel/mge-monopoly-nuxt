@@ -1,8 +1,8 @@
 <template>
   <div
-    class="board-corner shadow-board grid-board-jail transition-all transition-transform w-full items-center justify-end relative overflow-hidden grid grid-rows-[80%_1fr] grid-cols-[20%_1fr]">
+    class="board-corner shadow-board-sm lg:shadow-board grid-board-jail transition-all transition-transform w-full items-center justify-end relative overflow-hidden grid grid-rows-[80%_1fr] grid-cols-[20%_1fr]">
     <div
-      class="shadow-board col-start-2 flex items-center justify-center bg-mge-orange overflow-hidden place-self-stretch">
+      class="shadow-board-sm lg:shadow-board col-start-2 flex items-center justify-center bg-mge-orange overflow-hidden place-self-stretch">
       <img src="/images/ico-tool.svg" class="rotate-45 w-auto h-[70%] max-w-[70%]" alt="Pictogramme outils"/>
     </div>
     <div class="left-zone uppercase flex items-center justify-center">

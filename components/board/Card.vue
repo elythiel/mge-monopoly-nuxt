@@ -6,23 +6,23 @@
     ></div>
     <div ref="element"
          class="card-wrapper font-josefin fixed w-full h-full z-50 flex items-center justify-center pointer-events-none origin-top-left">
-      <div class="card p-3 2xl:p-4 portrait:h-[80vh] portrait:w-[80vw] w-[60vh] h-[90vh] rounded-lg bg-white shadow-card pointer-events-auto">
+      <div class="relative p-3 2xl:p-4 portrait:h-[80vh] w-[80vw] md:w-[60vw] h-[90vh] max-w-xl rounded-lg bg-white shadow-card pointer-events-auto">
         <div class="relative flex flex-col p-4 2xl:p-5 border-2 border-black h-full">
           <div class="font-bold border-2 border-black mb-8 relative" :class="`bg-mge-${card.color}`">
             <span v-if="card.duration"
                   class="absolute flex items-center justify-center p-1 text-center border-2 !leading-none border-black text-sm w-12 h-12 lg:text-xs 2xl:text-base -top-4 -left-4 rounded-full bg-white">
               <span>{{ card.duration }}</span>
             </span>
-            <h2 class="font-bold uppercase py-3 2xl:py-4 px-8 2xl:px-12 text-center text-lg"
+            <h2 class="card-header font-bold uppercase py-3 2xl:py-4 px-8 2xl:px-12 text-center text-lg"
                 v-html="card.header ?? card.title"></h2>
             <span
-                class="absolute border-2 border-black text-center text-sm lg:text-xs 2xl:text-base bottom-0 translate-y-1/2 right-4 bg-white uppercase p-1 2xl:p-2"
+                class="absolute border-2 border-black text-center text-xs xl:text-base bottom-0 translate-y-1/2 right-4 bg-white uppercase p-1 2xl:p-2"
                 v-if="card.location"
             >
               {{ card.location }}
             </span>
           </div>
-          <div ref="content" class="relative prose prose-card">
+          <div ref="content" class="relative prose prose-base prose-card">
               <ContentDoc v-if="card.content" :path="`cards/${card.content}`">
                 <template #not-found>
                   <p class="text-center">Expérience introuvable</p>
@@ -37,6 +37,12 @@
             {{ card.footer ?? card.period }}
           </span>
         </div>
+        <button type="button"
+                class="absolute -right-4 -top-4 shadow-md shadow-black/25 w-10 h-10 flex items-center justify-center bg-white text-mge-darkblue rounded-full z-50 leading-none"
+                @click="close()"
+                title="Fermer la carte">
+          <vue-feather type="x" size="1em"></vue-feather>
+        </button>
       </div>
     </div>
     <button type="button" class="fixed text-white left-0 top-1/2 -translate-y-1/2 z-50 lg:text-2xl lg:p-4"
@@ -107,5 +113,8 @@ defineExpose({open, close});
 .card-wrapper {
   transform-style: preserve-3d;
   perspective: 1500px;
+}
+.card-header:deep(small) {
+  @apply block text-xs;
 }
 </style>

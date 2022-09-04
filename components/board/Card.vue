@@ -13,7 +13,7 @@
                   class="absolute flex items-center justify-center p-1 text-center border-2 !leading-none border-black text-sm w-12 h-12 lg:text-xs 2xl:text-base -top-4 -left-4 rounded-full bg-white">
               <span>{{ card.duration }}</span>
             </span>
-            <h2 class="card-header font-bold uppercase py-3 2xl:py-4 px-8 2xl:px-12 text-center text-lg"
+            <h2 class="card-header font-bold uppercase py-3 xl:py-5 px-8 2xl:px-12 text-center text-lg"
                 v-html="card.header ?? card.title"></h2>
             <span
                 class="absolute border-2 border-black text-center text-xs xl:text-base bottom-0 translate-y-1/2 right-4 bg-white uppercase p-1 2xl:p-2"

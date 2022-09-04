@@ -51,45 +51,47 @@
     </div>
   </div>
 </template>
-<script>
+<script setup>
 import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
+import {onMounted, ref} from "vue";
+import {useToast} from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const main = ref();
+const form = ref();
+const email = ref(null);
+const name = ref(null);
+const subject = ref(null);
+const message = ref(null);
+
 const tl = gsap.timeline({defaults: {duration: 0.5, opacity: 0}});
+onMounted(() => {
+  tl.from(main.value, {'background-position-x': '-=30'});
+  tl.from(form.value, {scaleY: 0.2}, '<');
+  ScrollTrigger.create({trigger: main.value, onEnter: () => tl.restart(), onEnterBack: () => tl.restart()});
+});
 
-export default {
-  data() {
-    return {
-      email: null,
-      name: null,
-      subject: null,
-      message: null
-    }
-  },
-  mounted() {
-    tl.from(this.$refs.main, {'background-position-x': '-=30'});
-    tl.from(this.$refs.form, {scaleY: 0.2}, '<');
+function send(event) {
+  event.preventDefault();
+  const $toast = useToast();
 
-    ScrollTrigger.create({
-      trigger: this.$refs.main,
-      onEnter: () => tl.restart(),
-      onEnterBack: () => tl.restart()
-    });
-  },
-  methods: {
-    send(event) {
-      event.preventDefault();
-      $fetch('/', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-        body: new URLSearchParams(new FormData(this.$refs.form)).toString()
+  $fetch('/', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    body: new URLSearchParams(new FormData(form.value)).toString()
+  })
+      .then(() => {
+        $toast.success('Message envoyé');
+        email.value = null;
+        name.value = null;
+        subject.value = null;
+        message.value = null;
+        scrollTo(0, 0);
       })
-          .then(() => console.log('Form submitted'))
-          .catch(error => console.log(error));
-    }
-  }
+      .catch(() => $toast.error('Une erreur s\'est produite'));
 }
 </script>
 

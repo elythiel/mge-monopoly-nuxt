@@ -64,10 +64,10 @@ function openPrevCard(event, index) {
 }
 
 function getNextCard(index) {
-  if (index >= data.value.board.length - 1) {
+  if (index >= data.value.length - 1) {
     return getNextCard(0);
   }
-  if (data.value.board[index + 1]?.content) {
+  if (data.value[index + 1]?.card) {
     return boardCases.value[index + 1];
   }
 
@@ -76,9 +76,9 @@ function getNextCard(index) {
 
 function getPrevCard(index) {
   if (index <= 0) {
-    return getPrevCard(data.value.board.length);
+    return getPrevCard(data.value.length);
   }
-  if (data.value.board[index - 1]?.content) {
+  if (data.value[index - 1]?.card) {
     return boardCases.value[index - 1];
   }
 

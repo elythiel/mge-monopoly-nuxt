@@ -8,33 +8,28 @@
          class="card-wrapper font-josefin fixed w-full h-full z-50 flex items-center justify-center pointer-events-none origin-top-left">
       <div class="relative p-3 2xl:p-4 portrait:h-[80vh] w-[80vw] md:w-[60vw] h-[90vh] max-w-xl rounded-lg bg-white shadow-card pointer-events-auto">
         <div class="relative flex flex-col p-4 2xl:p-5 border-2 border-black h-full">
-          <div class="font-bold border-2 border-black mb-8 relative" :class="`bg-mge-${card.color}`">
-            <span v-if="card.duration"
+          <div class="font-bold border-2 border-black mb-8 relative" :class="`bg-mge-${data.color}`">
+            <span v-if="data.duration"
                   class="absolute flex items-center justify-center p-1 text-center border-2 !leading-none border-black text-sm w-12 h-12 lg:text-xs 2xl:text-base -top-4 -left-4 rounded-full bg-white">
-              <span>{{ card.duration }}</span>
+              <span>{{ data.duration }}</span>
             </span>
             <h2 class="card-header font-bold uppercase py-3 xl:py-5 px-8 2xl:px-12 text-center text-lg"
-                v-html="card.header ?? card.title"></h2>
+                v-html="data.header ?? data.title"></h2>
             <span
                 class="absolute border-2 border-black text-center text-xs xl:text-base bottom-0 translate-y-1/2 right-4 bg-white uppercase p-1 2xl:p-2"
-                v-if="card.location"
+                v-if="data.location"
             >
-              {{ card.location }}
+              {{ data.location }}
             </span>
           </div>
           <div ref="content" class="relative prose prose-base prose-card">
-              <ContentDoc v-if="card.content" :path="`cards/${card.content}`">
-                <template #not-found>
-                  <p class="text-center">Expérience introuvable</p>
-                </template>
-                <template #empty>
-                  <BoardCardLoader />
-                </template>
-              </ContentDoc>
+            <ContentRenderer :value="data">
+              <ContentSlot :use="$slots.default" unwrap="p" />
+            </ContentRenderer>
           </div>
-          <span v-if="card.footer || card.period"
+          <span v-if="data.footer || data.period"
                 class="absolute -bottom-[0.9rem] bg-white px-2 left-1/2 -translate-x-1/2 text-sm 2xl:text-base">
-            {{ card.footer ?? card.period }}
+            {{ data.footer ?? data.period }}
           </span>
         </div>
         <button type="button"
@@ -65,7 +60,7 @@ import {nextTick, ref} from 'vue';
 import PerfectScrollbar from "perfect-scrollbar";
 
 defineProps({
-  card: Object
+  data: Object
 });
 
 const initialized = ref(false);

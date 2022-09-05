@@ -19,8 +19,8 @@
     </div>
     <div :style="`transform: rotate(${rotation * 90}deg)`"
          class="board-grid font-josefin w-[90vw] h-[90vw] mx-auto text-[1vw] lg:text-[0.85vw] grid grid-cols-board grid-rows-board relative transition-transform duration-500">
-      <template v-for="(caseContent, index) in data.board">
-        <BoardCase ref="boardCases" :content="caseContent" class="board-case bg-white"
+      <template v-for="(caseData, index) in data">
+        <BoardCase ref="boardCases" :data="caseData" class="board-case bg-white"
                    @next-card="(event) => openNextCard(event, index)"
                    @prev-card="(event) => openPrevCard(event, index)"
         />
@@ -49,7 +49,7 @@
 import VueFeather from "vue-feather";
 import {ref} from "vue";
 
-const {data} = await useAsyncData('cards-list', () => queryContent('/board').findOne());
+const {data} = await useAsyncData('cards-list', () => queryContent('card').find());
 const boardCases = ref();
 const rotation = ref(0);
 

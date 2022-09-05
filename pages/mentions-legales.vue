@@ -52,4 +52,16 @@ const main = ref();
 onMounted(() => {
   gsap.fromTo(main.value, {opacity: 0, x: -200}, {opacity: 1, x: 0, ease: 'none'});
 });
+
+// This will be reactive even you change title/description above
+useHead({
+  title: 'Mentions légales | Morgane Gervasoni | Product Owner freelance',
+  meta: [
+    {
+      hid: 'description',
+      name: 'description',
+      content: 'Mentions légales relatives aux informations du site'
+    }
+  ]
+})
 </script>

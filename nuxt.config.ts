@@ -7,10 +7,7 @@ export default defineNuxtConfig({
         title: 'Morgane Gervasoni - Product Owner',
         htmlAttrs: {
             lang: 'fr'
-        },
-        link: [
-            {rel: 'icon', type: 'image/svg', href: '/favicon.svg'},
-        ],
+        }
     },
 
     // Global CSS: https://go.nuxtjs.dev/config-css
@@ -22,3 +19,4 @@ export default defineNuxtConfig({
         '@nuxtjs/tailwindcss'
     ]
 })
+

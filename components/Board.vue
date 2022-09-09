@@ -32,7 +32,7 @@
       <BoardPoliceman class="bg-white"/>
       <!-- CENTER SQUARE START -->
       <div class="board-case-center col-span-9 bg-transparent row-span-9 overflow-hidden w-full h-full transition-transform duration-500"
-           :style="`transform: rotate(-${rotation * 90}deg)`">
+           :style="`transform: rotate(${-rotation * 90}deg)`">
         <div class="font-bold flex flex-col items-center justify-center -rotate-45 w-full h-full">
           <h2 class="normal-case text-xs lg:text-xl 2xl:text-2xl">
             Curriculum Vitae - Morgane

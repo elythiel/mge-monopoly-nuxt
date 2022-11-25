@@ -24,7 +24,7 @@
           </div>
           <div ref="content" class="relative prose prose-base prose-card">
             <ContentRenderer :value="data">
-              <ContentSlot :use="$slots.default" unwrap="p" />
+              <ContentRendererMarkdown :value="data" />
             </ContentRenderer>
           </div>
           <span v-if="data.footer || data.period"

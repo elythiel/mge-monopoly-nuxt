@@ -1,9 +1,5 @@
-import {defineNuxtConfig} from 'nuxt'
-
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
-export default defineNuxtConfig({
+export default {
     target: 'static',
-    // Global CSS: https://go.nuxtjs.dev/config-css
     css: [
         "@/assets/css/styles.css"
     ],
@@ -11,5 +7,4 @@ export default defineNuxtConfig({
         '@nuxt/content',
         '@nuxtjs/tailwindcss'
     ]
-})
-
+};

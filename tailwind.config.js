@@ -19,10 +19,10 @@ module.exports = {
             },
             backgroundPosition: {
                 body: "69vw 30vh",
-                contact: "top 7rem left -60%"
+                contact: "top 7rem left -2%"
             },
             backgroundSize: {
-                contact: "55% auto"
+                contact: "auto 40vw"
             },
             borderWidth: {
                 3: "3px",

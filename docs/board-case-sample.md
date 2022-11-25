@@ -15,6 +15,6 @@ duration: "3 mois"
 
 [Ce texte aura les classes suivantes]{.block.text-center}
 
-::skills
+::prose-skills
 Liste, des, expertises
 ::

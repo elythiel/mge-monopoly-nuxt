@@ -1,44 +1,62 @@
 <template>
-  <div class="board-case shadow-board-sm lg:shadow-board transition-all leading-1.15 transition-transform flex flex-col z-10"
-       v-bind:class="{'cursor-pointer hover:scale-300 lg:hover:scale-110 hover:z-20': data.card}"
-       @click="data.card ? openCard($event) : null"
+  <a
+    href="#"
+    class="board-case shadow-board-sm lg:shadow-board transition-all leading-1.15 transition-transform flex flex-col z-10"
+    :title="data.card ? 'Ouvrir la carte' : ''"
+    :class="{
+      'hover:scale-300 lg:hover:scale-110 hover:z-20': data.card,
+      'cursor-default': !data.card
+    }"
+    @click.prevent="data.card ? openCard($event) : null"
   >
-    <div v-if="data.color"
-         class="shadow-board-sm lg:shadow-board basis-3/12"
-         :class="'bg-mge-' + data.color"
-    ></div>
+    <div
+      v-if="data.color"
+      class="shadow-board-sm lg:shadow-board basis-3/12"
+      :class="'bg-mge-' + data.color"
+    />
     <div class="flex-grow flex flex-col justify-between items-center p-0.5 md:p-1 lg:p-2 break-words md:break-normal">
-      <h4 class="uppercase text-center line-clamp-2 lg:line-clamp-5" v-html="data.title"></h4>
-      <div v-if="data.period"
-           class="text-center">
+      <h4 class="uppercase text-center line-clamp-2 lg:line-clamp-5" v-html="data.title" />
+      <div
+        v-if="data.period"
+        class="text-center"
+      >
         {{ data.period }}
       </div>
-      <img v-if="data.image"
-           :src="'/images/' + data.image.name"
-           class="w-auto h-auto m-auto"
-           :class="getImageSize(data.image)"
-           :alt="data.image.alt"
-      />
+      <img
+        v-if="data.image"
+        :src="'/images/' + data.image.name"
+        class="w-auto h-auto m-auto"
+        :class="getImageSize(data.image)"
+        :alt="data.image.alt"
+      >
     </div>
     <Teleport to="body">
-      <BoardCard ref="cardComponent" v-if="data.card" :data="data"
-                 @next-card="(event) => $emit('nextCard', event)"
-                 @prev-card="(event) => $emit('prevCard', event)"
+      <BoardCard
+        v-if="data.card"
+        ref="cardComponent"
+        :data="data"
+        @next-card="(event) => $emit('nextCard', event)"
+        @prev-card="(event) => $emit('prevCard', event)"
       />
     </Teleport>
-  </div>
+  </a>
 </template>
 
-<script setup>
-import {ref} from "vue";
+<script lang="ts" setup>
+import { ref } from 'vue';
+import BoardCard from '~/components/board/BoardCard.vue';
 
 const props = defineProps({
-  data: Object
+  data: {
+    type: Object,
+    required: true
+  }
 });
 
 const cardComponent = ref();
 
-defineExpose({openCard, closeCard});
+defineExpose({ openCard, closeCard });
+defineEmits(['prevCard', 'nextCard']);
 
 function openCard(event) {
   if (props.data.card) {

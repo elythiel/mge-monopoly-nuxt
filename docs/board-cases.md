@@ -33,7 +33,7 @@ La suite du fichier contient le contenu de la carte en markdown
 
 [Ce texte aura les classes ci-après]{.block.text-center}
 
-::skills
+::prose-skills
 Liste, des, expertises
 ::
 ```

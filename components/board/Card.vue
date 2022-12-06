@@ -6,9 +6,9 @@
     ></div>
     <div ref="element"
          class="card-wrapper font-josefin fixed w-full h-full z-50 flex items-center justify-center pointer-events-none origin-top-left">
-      <div class="relative p-3 2xl:p-4 portrait:h-[80vh] w-[80vw] md:w-[60vw] h-[90vh] max-w-xl rounded-lg bg-white shadow-card pointer-events-auto">
-        <div class="relative flex flex-col p-4 2xl:p-5 border-2 border-black h-full">
-          <div class="font-bold border-2 border-black mb-8 relative" :class="`bg-mge-${data.color}`">
+      <div class="relative p-2 lg:p-4 portrait:h-[80vh] w-[90vw] lg:w-[80vw] md:w-[60vw] h-[90vh] max-w-xl rounded-lg bg-white shadow-card pointer-events-auto">
+        <div class="flex flex-col p-2 lg:p-4 2xl:p-5 border-2 border-black h-full">
+          <div class="font-bold border-2 border-black mb-4 lg:mb-8 relative" :class="`bg-mge-${data.color}`">
             <span v-if="data.duration"
                   class="absolute flex items-center justify-center p-1 text-center border-2 !leading-none border-black text-sm w-12 h-12 lg:text-xs 2xl:text-base -top-4 -left-4 rounded-full bg-white">
               <span>{{ data.duration }}</span>
@@ -27,10 +27,13 @@
               <ContentRendererMarkdown :value="data" />
             </ContentRenderer>
           </div>
-          <span v-if="data.footer || data.period"
-                class="absolute -bottom-[0.9rem] bg-white px-2 left-1/2 -translate-x-1/2 text-sm 2xl:text-base">
-            {{ data.footer ?? data.period }}
-          </span>
+        </div>
+        <div v-if="data.footer || data.period"
+             class="absolute bottom-0.5 text-center left-0 w-full"
+        >
+            <span class="bg-white w-fit whitespace-nowrap px-2 left-1/2 -translate-x-1/2 text-sm 2xl:text-base">
+              {{ data.footer ?? data.period }}
+            </span>
         </div>
         <button type="button"
                 class="absolute -right-4 -top-4 shadow-md shadow-black/25 w-10 h-10 flex items-center justify-center bg-white text-mge-darkblue rounded-full z-50 leading-none"
@@ -40,12 +43,12 @@
         </button>
       </div>
     </div>
-    <button type="button" class="fixed text-white left-0 top-1/2 -translate-y-1/2 z-50 lg:text-2xl lg:p-4"
+    <button type="button" class="fixed text-white left-0 top-1/2 -translate-y-1/2 z-50 lg:text-2xl p-4 hidden lg:block"
             title="Afficher la carte précédente"
             @click="$emit('prevCard', $event)">
       <vue-feather type="chevron-left" size="3em"></vue-feather>
     </button>
-    <button type="button" class="fixed text-white right-0 top-1/2 -translate-y-1/2 z-50 lg:text-2xl lg:p-4"
+    <button type="button" class="fixed text-white right-0 top-1/2 -translate-y-1/2 z-50 lg:text-2xl p-4 hidden lg:block"
             title="Afficher la carte suivante"
             @click="$emit('nextCard', $event)">
       <vue-feather type="chevron-right" size="3em"></vue-feather>

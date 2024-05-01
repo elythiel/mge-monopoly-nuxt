@@ -1,10 +1,13 @@
 <script lang="ts" setup>
 import VueFeather from 'vue-feather'
-import { ref } from 'vue'
+import { ref, Ref } from 'vue'
 import { useAsyncData } from 'nuxt/app'
 import BoardCase from '@/components/Board/BoardCase'
+import {CardContent} from "~/types/types";
 
-const { data } = await useAsyncData(
+const { data }: {
+  data: Ref<CardContent[]>
+} = await useAsyncData(
   'cards-list',
   () => queryContent('card').find(),
 )
@@ -24,8 +27,8 @@ function openPrevCard(event, index) {
 }
 
 function getNextCard(index): typeof BoardCase {
-  if (index >= data.value.length - 1) {
-    return getNextCard(0)
+  if (index > data.value.length - 1) {
+    return getNextCard(-1)
   }
   if (data.value[index + 1]?.card) {
     return boardCaseElements.value[index + 1]
@@ -35,7 +38,7 @@ function getNextCard(index): typeof BoardCase {
 }
 
 function getPrevCard(index) {
-  if (index <= 0) {
+  if (index < 0) {
     return getPrevCard(data.value.length)
   }
   if (data.value[index - 1]?.card) {

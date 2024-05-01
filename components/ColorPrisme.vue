@@ -1,34 +1,51 @@
+<script lang="ts" setup>
+import { onMounted, ref } from 'vue'
+
+defineProps<{
+  text: string
+}>()
+
+const state = ref(1)
+
+onMounted(() => {
+  setInterval(() => state.value = getNewState(), 2000)
+})
+
+function getNewState(): number {
+  const newState = Math.floor(Math.random() * 4) + 1
+  if (newState !== state.value) {
+    return newState
+  }
+  return getNewState()
+}
+</script>
+
 <template>
   <span class="scene relative">
-    <span class="invisible">{{text}}</span>
-    <span ref="prisme" class="prisme absolute h-full left-0 top-0" :class="`state-${state}`">
-        <span class="face-1 absolute leading-[initial] h-full text-mge-lightblue" v-show="state !== 3">{{text}}</span>
-        <span class="face-2 absolute leading-[initial] h-full text-mge-yellow" v-show="state !== 4">{{text}}</span>
-        <span class="face-3 absolute leading-[initial] h-full text-mge-green" v-show="state !== 1">{{text}}</span>
-        <span class="face-4 absolute leading-[initial] h-full text-mge-red" v-show="state !== 2">{{text}}</span>
+    <span class="invisible">{{ text }}</span>
+    <span
+      class="prisme absolute h-full left-0 top-0"
+      :class="`state-${state}`"
+    >
+      <span
+        v-show="state !== 3"
+        class="face-1 absolute leading-[initial] h-full text-mge-lightblue"
+      >{{ text }}</span>
+      <span
+        v-show="state !== 4"
+        class="face-2 absolute leading-[initial] h-full text-mge-yellow"
+      >{{ text }}</span>
+      <span
+        v-show="state !== 1"
+        class="face-3 absolute leading-[initial] h-full text-mge-green"
+      >{{ text }}</span>
+      <span
+        v-show="state !== 2"
+        class="face-4 absolute leading-[initial] h-full text-mge-red"
+      >{{ text }}</span>
     </span>
   </span>
 </template>
-
-<script setup>
-import {ref} from "vue";
-
-defineProps({
-  text: String
-});
-
-let state = ref(1);
-
-setInterval(() => state.value = getNewState(), 2000);
-
-function getNewState() {
-  const newState = Math.floor(Math.random() * 4) + 1;
-  if (newState !== state.value) {
-    return newState;
-  }
-  return getNewState();
-}
-</script>
 
 <style scoped>
 .scene {

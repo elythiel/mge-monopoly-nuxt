@@ -1,38 +1,116 @@
+<script lang="ts" setup>
+import VueFeather from 'vue-feather'
+import type { Ref } from 'vue'
+import { ref } from 'vue'
+import { useAsyncData } from 'nuxt/app'
+import BoardCase from '@/components/Board/BoardCase'
+import type { CardContent } from '~/types/types'
+
+const { data }: {
+  data: Ref<CardContent[]>
+} = await useAsyncData(
+  'cards-list',
+  () => queryContent('card').find(),
+)
+const boardCaseElements = ref<typeof BoardCase[]>([])
+const rotation = ref(0)
+
+function openNextCard(event, index) {
+  if (boardCaseElements.value[index]) {
+    boardCaseElements.value[index].closeCard()
+    getNextCard(index).openCard(event)
+  }
+}
+
+function openPrevCard(event, index) {
+  boardCaseElements.value[index].closeCard()
+  getPrevCard(index).openCard(event)
+}
+
+function getNextCard(index): typeof BoardCase {
+  if (index > data.value.length - 1) {
+    return getNextCard(-1)
+  }
+  if (data.value[index + 1]?.card) {
+    return boardCaseElements.value[index + 1]
+  }
+
+  return getNextCard(index + 1)
+}
+
+function getPrevCard(index) {
+  if (index < 0) {
+    return getPrevCard(data.value.length)
+  }
+  if (data.value[index - 1]?.card) {
+    return boardCaseElements.value[index - 1]
+  }
+
+  return getPrevCard(index - 1)
+}
+
+function rotateBoard(direction) {
+  rotation.value = rotation.value + direction
+}
+</script>
+
 <template>
   <div class="overflow-hidden relative bg-white pt-20 pb-12 mb-4 lg:pt-24 lg:pb-28 lg:mb-12 2xl:pt-40 2xl:pb-28">
     <div class="flex justify-between w-[90vw] mx-auto items-center mb-8 2xl:mb-12">
-      <button type="button"
-              @click="rotateBoard(-1)"
-              class="p-2 md:text-2xl flex items-center justify-center"
-              title="Tourner le plateau">
-        <vue-feather type="rotate-ccw" stroke-width="1" size="2em"></vue-feather>
+      <button
+        type="button"
+        class="p-2 md:text-2xl flex items-center justify-center"
+        title="Tourner le plateau"
+        @click="rotateBoard(-1)"
+      >
+        <vue-feather
+          type="rotate-ccw"
+          stroke-width="1"
+          size="2em"
+        />
       </button>
       <h2 class="font-avante-titul-inline text-center text-2xl md:text-4xl lg:text-6xl 2xl:text-7xl">
         Mon parcours
       </h2>
-      <button type="button"
-              @click="rotateBoard(1)"
-              class="p-2 md:text-2xl flex items-center justify-center"
-              title="Tourner le plateau">
-        <vue-feather type="rotate-cw" stroke-width="1" size="2em"></vue-feather>
+      <button
+        type="button"
+        class="p-2 md:text-2xl flex items-center justify-center"
+        title="Tourner le plateau"
+        @click="rotateBoard(1)"
+      >
+        <vue-feather
+          type="rotate-cw"
+          stroke-width="1"
+          size="2em"
+        />
       </button>
     </div>
-    <div :style="`transform: rotate(${rotation * 90}deg)`"
-         class="board-grid font-josefin w-[90vw] h-[90vw] mx-auto text-[1vw] lg:text-[0.85vw] grid grid-cols-board grid-rows-board relative transition-transform duration-500">
-      <template v-for="(caseData, index) in data">
-        <BoardCase ref="boardCases" :data="caseData" class="board-case bg-white"
-                   @next-card="(event) => openNextCard(event, index)"
-                   @prev-card="(event) => openPrevCard(event, index)"
+    <div
+      :style="`transform: rotate(${rotation * 90}deg)`"
+      class="board-grid font-josefin w-[90vw] h-[90vw] mx-auto text-[1vw] lg:text-[0.85vw] grid grid-cols-board grid-rows-board relative transition-transform duration-500"
+    >
+      <template
+        v-for="(caseData, index) in data"
+        :key="index"
+      >
+        <BoardCase
+          ref="boardCaseElements"
+          :data="caseData"
+          class="board-case bg-white"
+          @next-card="(event) => openNextCard(event, index)"
+          @prev-card="(event) => openPrevCard(event, index)"
         />
       </template>
       <!-- CORNER SQUARES -->
-      <BoardStart class="bg-white"/>
-      <BoardJail class="bg-white"/>
-      <BoardParking class="bg-white"/>
-      <BoardPoliceman class="bg-white"/>
+      <BoardStart class="bg-white" />
+      <BoardJail class="bg-white" />
+      <BoardParking class="bg-white" />
+      <BoardPoliceman class="bg-white" />
       <!-- CENTER SQUARE START -->
-      <div class="board-case-center col-span-9 bg-transparent row-span-9 overflow-hidden w-full h-full transition-transform duration-500"
-           :style="`transform: rotate(${-rotation * 90}deg)`">
+      <div
+        class="board-case-center col-span-9 bg-transparent row-span-9 overflow-hidden w-full h-full transition-transform duration-500"
+        :style="`transform: rotate(${-rotation * 90}deg)`"
+      >
         <div class="font-bold flex flex-col items-center justify-center -rotate-45 w-full h-full">
           <h2 class="normal-case text-xs lg:text-xl 2xl:text-2xl">
             Curriculum Vitae - Morgane
@@ -45,50 +123,6 @@
     </div>
   </div>
 </template>
-<script setup>
-import VueFeather from "vue-feather";
-import {ref} from "vue";
-
-const {data} = await useAsyncData('cards-list', () => queryContent('card').find());
-const boardCases = ref();
-const rotation = ref(0);
-
-function openNextCard(event, index) {
-  boardCases.value[index].closeCard();
-  getNextCard(index).openCard(event);
-}
-
-function openPrevCard(event, index) {
-  boardCases.value[index].closeCard();
-  getPrevCard(index).openCard(event);
-}
-
-function getNextCard(index) {
-  if (index >= data.value.length - 1) {
-    return getNextCard(0);
-  }
-  if (data.value[index + 1]?.card) {
-    return boardCases.value[index + 1];
-  }
-
-  return getNextCard(index + 1);
-}
-
-function getPrevCard(index) {
-  if (index <= 0) {
-    return getPrevCard(data.value.length);
-  }
-  if (data.value[index - 1]?.card) {
-    return boardCases.value[index - 1];
-  }
-
-  return getPrevCard(index - 1);
-}
-
-function rotateBoard(direction) {
-  rotation.value = rotation.value + direction;
-}
-</script>
 
 <style scoped>
 .board-case-center {

@@ -12,7 +12,7 @@ const { data }: {
   'cards-list',
   () => queryContent('card').find(),
 )
-const boardCaseElements = ref<typeof BoardCase[]>([])
+const boardCaseElements = ref<InstanceType<typeof BoardCase>[]>([])
 const rotation = ref(0)
 
 function openNextCard(event, index) {
@@ -27,7 +27,7 @@ function openPrevCard(event, index) {
   getPrevCard(index).openCard(event)
 }
 
-function getNextCard(index): typeof BoardCase {
+function getNextCard(index): InstanceType<typeof BoardCase> {
   if (index > data.value.length - 1) {
     return getNextCard(-1)
   }
@@ -38,7 +38,7 @@ function getNextCard(index): typeof BoardCase {
   return getNextCard(index + 1)
 }
 
-function getPrevCard(index) {
+function getPrevCard(index): InstanceType<typeof BoardCase> {
   if (index < 0) {
     return getPrevCard(data.value.length)
   }

@@ -28,7 +28,7 @@ function send(event) {
   $fetch('/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(new FormData(mainElement.value)).toString(),
+    body: new URLSearchParams(new FormData(formElement.value)).toString(),
   })
     .then(() => {
       $toast.success('Message envoyé')
@@ -44,8 +44,8 @@ function send(event) {
 
 <template>
   <div
-      ref="mainElement"
-      class="relative shadow-3 bg-white pt-20 pb-12 mb-4 lg:pt-24 lg:pb-28 lg:mb-12 2xl:pt-28 2xl:pb-28 lg:bg-contact lg:bg-no-repeat"
+    ref="mainElement"
+    class="relative shadow-3 bg-white pt-20 pb-12 mb-4 lg:pt-24 lg:pb-28 lg:mb-12 2xl:pt-28 2xl:pb-28 lg:bg-contact lg:bg-no-repeat"
   >
     <div class="relative z-10">
       <h2 class="font-avante-titul-inline text-center text-4xl lg:text-6xl mb-8 2xl:text-7xl 2xl:mb-12">
@@ -53,17 +53,17 @@ function send(event) {
       </h2>
       <div class="m-auto w-4/5 text-base lg:text-xl lg:w-2/5 2xl:w-1/3 2xl:text-2xl">
         <form
-            ref="formElement"
-            name="contact"
-            method="POST"
-            class="origin-top"
-            data-netlify-recaptcha="true"
-            @submit="send"
+          ref="formElement"
+          name="contact"
+          method="POST"
+          class="origin-top"
+          data-netlify-recaptcha="true"
+          @submit="send"
         >
           <input
-              type="hidden"
-              name="form-name"
-              value="contact"
+            type="hidden"
+            name="form-name"
+            value="contact"
           >
           <p class="hidden">
             <label>Don’t fill this out: <input name="bot-field"></label>
@@ -72,11 +72,11 @@ function send(event) {
           <label class="block ">
             Email
             <input
-                v-model="email"
-                type="email"
-                class="w-full border-2 border-gray-300 p-3 mt-1 2xl:mt-2"
-                name="email"
-                required
+              v-model="email"
+              type="email"
+              class="w-full border-2 border-gray-300 p-3 mt-1 2xl:mt-2"
+              name="email"
+              required
             >
           </label>
           <span class="text-red-500" />
@@ -84,11 +84,11 @@ function send(event) {
           <label class="block mt-5">
             Nom
             <input
-                v-model="name"
-                type="text"
-                class="w-full border-2 border-gray-300 p-3 mt-1 2xl:mt-2"
-                name="name"
-                required
+              v-model="name"
+              type="text"
+              class="w-full border-2 border-gray-300 p-3 mt-1 2xl:mt-2"
+              name="name"
+              required
             >
           </label>
           <span class="text-red-500" />
@@ -96,11 +96,11 @@ function send(event) {
           <label class="block mt-5">
             Objet
             <input
-                v-model="subject"
-                type="text"
-                class="w-full border-2 border-gray-300 p-3 mt-1 2xl:mt-2"
-                name="subject"
-                required
+              v-model="subject"
+              type="text"
+              class="w-full border-2 border-gray-300 p-3 mt-1 2xl:mt-2"
+              name="subject"
+              required
             >
           </label>
           <span class="text-red-500 " />
@@ -108,11 +108,11 @@ function send(event) {
           <label class="block mt-5">
             Message
             <textarea
-                v-model="message"
-                class="w-full border-2 border-gray-300 p-3 mt-1 2xl:mt-2"
-                name="message"
-                rows="8"
-                required
+              v-model="message"
+              class="w-full border-2 border-gray-300 p-3 mt-1 2xl:mt-2"
+              name="message"
+              rows="8"
+              required
             />
           </label>
           <span class="text-red-500" />
@@ -120,14 +120,14 @@ function send(event) {
           <div class="flex flex-col lg:flex-row items-center">
             <div data-netlify-recaptcha="true" />
             <button
-                type="submit"
-                class="transition-all outline-none mt-4 lg:mt-0 lg:ml-auto p-2 2xl:p-3"
-                title="Envoyer"
+              type="submit"
+              class="transition-all outline-none mt-4 lg:mt-0 lg:ml-auto p-2 2xl:p-3"
+              title="Envoyer"
             >
               <img
-                  src="/images/ico-plane.svg"
-                  alt="Pictogramme avion en papier"
-                  class="h-12 2xl:h-16 rotate-8"
+                src="/images/ico-plane.svg"
+                alt="Pictogramme avion en papier"
+                class="h-12 2xl:h-16 rotate-8"
               >
             </button>
           </div>

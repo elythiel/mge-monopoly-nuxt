@@ -1,12 +1,14 @@
-import type { NuxtConfig } from '@nuxt/types'
-
-const config: NuxtConfig = {
+const config = {
   target: 'static',
   css: [
     '@/assets/css/styles.css',
   ],
   buildModules: ['@nuxt/typescript-build'],
-  modules: ['@nuxt/content', '@nuxtjs/tailwindcss', '@nuxt/eslint'],
+  modules: [
+    '@nuxt/content',
+    '@nuxtjs/tailwindcss',
+    '@nuxt/eslint',
+  ],
   eslint: {
     config: {
       stylistic: true,

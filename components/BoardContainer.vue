@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 import VueFeather from 'vue-feather'
-import { ref, Ref } from 'vue'
+import type { Ref } from 'vue'
+import { ref } from 'vue'
 import { useAsyncData } from 'nuxt/app'
 import BoardCase from '@/components/Board/BoardCase'
-import {CardContent} from "~/types/types";
+import type { CardContent } from '~/types/types'
 
 const { data }: {
   data: Ref<CardContent[]>
@@ -57,47 +58,47 @@ function rotateBoard(direction) {
   <div class="overflow-hidden relative bg-white pt-20 pb-12 mb-4 lg:pt-24 lg:pb-28 lg:mb-12 2xl:pt-40 2xl:pb-28">
     <div class="flex justify-between w-[90vw] mx-auto items-center mb-8 2xl:mb-12">
       <button
-          type="button"
-          class="p-2 md:text-2xl flex items-center justify-center"
-          title="Tourner le plateau"
-          @click="rotateBoard(-1)"
+        type="button"
+        class="p-2 md:text-2xl flex items-center justify-center"
+        title="Tourner le plateau"
+        @click="rotateBoard(-1)"
       >
         <vue-feather
-            type="rotate-ccw"
-            stroke-width="1"
-            size="2em"
+          type="rotate-ccw"
+          stroke-width="1"
+          size="2em"
         />
       </button>
       <h2 class="font-avante-titul-inline text-center text-2xl md:text-4xl lg:text-6xl 2xl:text-7xl">
         Mon parcours
       </h2>
       <button
-          type="button"
-          class="p-2 md:text-2xl flex items-center justify-center"
-          title="Tourner le plateau"
-          @click="rotateBoard(1)"
+        type="button"
+        class="p-2 md:text-2xl flex items-center justify-center"
+        title="Tourner le plateau"
+        @click="rotateBoard(1)"
       >
         <vue-feather
-            type="rotate-cw"
-            stroke-width="1"
-            size="2em"
+          type="rotate-cw"
+          stroke-width="1"
+          size="2em"
         />
       </button>
     </div>
     <div
-        :style="`transform: rotate(${rotation * 90}deg)`"
-        class="board-grid font-josefin w-[90vw] h-[90vw] mx-auto text-[1vw] lg:text-[0.85vw] grid grid-cols-board grid-rows-board relative transition-transform duration-500"
+      :style="`transform: rotate(${rotation * 90}deg)`"
+      class="board-grid font-josefin w-[90vw] h-[90vw] mx-auto text-[1vw] lg:text-[0.85vw] grid grid-cols-board grid-rows-board relative transition-transform duration-500"
     >
       <template
-          v-for="(caseData, index) in data"
-          :key="index"
+        v-for="(caseData, index) in data"
+        :key="index"
       >
         <BoardCase
-            ref="boardCaseElements"
-            :data="caseData"
-            class="board-case bg-white"
-            @next-card="(event) => openNextCard(event, index)"
-            @prev-card="(event) => openPrevCard(event, index)"
+          ref="boardCaseElements"
+          :data="caseData"
+          class="board-case bg-white"
+          @next-card="(event) => openNextCard(event, index)"
+          @prev-card="(event) => openPrevCard(event, index)"
         />
       </template>
       <!-- CORNER SQUARES -->
@@ -107,8 +108,8 @@ function rotateBoard(direction) {
       <BoardPoliceman class="bg-white" />
       <!-- CENTER SQUARE START -->
       <div
-          class="board-case-center col-span-9 bg-transparent row-span-9 overflow-hidden w-full h-full transition-transform duration-500"
-          :style="`transform: rotate(${-rotation * 90}deg)`"
+        class="board-case-center col-span-9 bg-transparent row-span-9 overflow-hidden w-full h-full transition-transform duration-500"
+        :style="`transform: rotate(${-rotation * 90}deg)`"
       >
         <div class="font-bold flex flex-col items-center justify-center -rotate-45 w-full h-full">
           <h2 class="normal-case text-xs lg:text-xl 2xl:text-2xl">

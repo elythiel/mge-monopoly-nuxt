@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+import IndexHeader from '../components/IndexHeader'
+import BoardContainer from '../components/BoardContainer'
+import ContactForm from '../components/ContactForm'
+</script>
+
 <template>
   <div>
     <IndexHeader id="header" />
@@ -18,13 +24,3 @@
     <ContactForm id="contact" />
   </div>
 </template>
-
-<script>
-import IndexHeader from '../components/IndexHeader'
-import BoardContainer from '../components/BoardContainer'
-import ContactForm from '../components/ContactForm'
-
-export default {
-  components: { ContactForm, BoardContainer, IndexHeader },
-}
-</script>

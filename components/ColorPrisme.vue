@@ -24,24 +24,24 @@ function getNewState(): number {
   <span class="scene relative">
     <span class="invisible">{{ text }}</span>
     <span
-        class="prisme absolute h-full left-0 top-0"
-        :class="`state-${state}`"
+      class="prisme absolute h-full left-0 top-0"
+      :class="`state-${state}`"
     >
       <span
-          v-show="state !== 3"
-          class="face-1 absolute leading-[initial] h-full text-mge-lightblue"
+        v-show="state !== 3"
+        class="face-1 absolute leading-[initial] h-full text-mge-lightblue"
       >{{ text }}</span>
       <span
-          v-show="state !== 4"
-          class="face-2 absolute leading-[initial] h-full text-mge-yellow"
+        v-show="state !== 4"
+        class="face-2 absolute leading-[initial] h-full text-mge-yellow"
       >{{ text }}</span>
       <span
-          v-show="state !== 1"
-          class="face-3 absolute leading-[initial] h-full text-mge-green"
+        v-show="state !== 1"
+        class="face-3 absolute leading-[initial] h-full text-mge-green"
       >{{ text }}</span>
       <span
-          v-show="state !== 2"
-          class="face-4 absolute leading-[initial] h-full text-mge-red"
+        v-show="state !== 2"
+        class="face-4 absolute leading-[initial] h-full text-mge-red"
       >{{ text }}</span>
     </span>
   </span>

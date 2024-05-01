@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 
 defineProps({
   text: String
@@ -19,7 +19,9 @@ defineProps({
 
 let state = ref(1);
 
-setInterval(() => state.value = getNewState(), 2000);
+onMounted(() => {
+  setInterval(() => state.value = getNewState(), 2000);
+});
 
 function getNewState() {
   const newState = Math.floor(Math.random() * 4) + 1;

@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
     content: [
         "./content/**/*.md",
@@ -48,8 +50,9 @@ module.exports = {
             },
             fontFamily: {
                 "avante-titul-inline": ["AvanteTitulInline", "serif"],
-                barlow: ["Barlow Semi Condensed", "sans-serif"],
-                josefin: ["Josefin Sans", "sans-serif"]
+                'sans': ['"Barlow Semi Condensed"', ...defaultTheme.fontFamily.sans],
+                'barlow': ['"Barlow Semi Condensed"', ...defaultTheme.fontFamily.sans],
+                josefin: ['"Josefin Sans"', "sans-serif"]
             },
             gridTemplateColumns: {
                 board: "12.65% repeat(9, 1fr) 12.65%"
@@ -100,7 +103,6 @@ module.exports = {
         },
     },
     plugins: [
-        require('@tailwindcss/typography'),
-        require('@tailwindcss/line-clamp')
+        require('@tailwindcss/typography')
     ],
 }

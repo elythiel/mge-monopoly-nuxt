@@ -39,12 +39,12 @@ export default {
     }
   },
   created() {
+  },
+  mounted() {
     ScrollTrigger.create({
       trigger: '#header',
       onUpdate: scrollTrigger => this.isDark = this.$route.path !== '/' || scrollTrigger.isActive
     });
-  },
-  mounted() {
     gsap.from(this.$refs.navLinks, {scale: 0.2, x: 100, opacity: 0, stagger: 0.1});
   },
   methods: {

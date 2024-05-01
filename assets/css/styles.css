@@ -7,15 +7,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-    font-family: "AvanteTitulInline";
-    src: url("../fonts/AvanteTitulInline.ttf") format("truetype");
-}
+@layer base {
+    @font-face {
+        font-family: "AvanteTitulInline";
+        src: url("../fonts/AvanteTitulInline.ttf") format("truetype");
+    }
 
-html {
-    @apply scroll-smooth;
-}
+    html {
+        @apply scroll-smooth text-[16px];
+    }
 
-body {
-    @apply font-barlow text-mge-darkblue bg-mge-darkblue bg-no-repeat bg-fixed bg-body bg-[length:44vw];
+    body {
+        @apply font-barlow text-mge-darkblue bg-mge-darkblue bg-no-repeat bg-fixed bg-body bg-[length:44vw];
+    }
 }

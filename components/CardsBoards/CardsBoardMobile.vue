@@ -1,13 +1,12 @@
 <script lang="ts" setup>
-import type { Ref } from 'vue'
-import { useAsyncData } from 'nuxt/app'
+import { computed } from 'vue'
 import type { CardContent } from '~/types/types'
 import SimpleCard from '~/components/Cards/SimpleCard.vue'
 
-const { data }: { data: Ref<CardContent[]> } = await useAsyncData(
-  'cards-list',
-  () => queryContent('card').where({ card: { $eq: true } }).sort({ _file: -1, $numeric: true }).find(),
-)
+const props = defineProps<{
+  data: CardContent[]
+}>()
+const reversed = computed(() => props.data ? [...props.data].reverse() : [])
 </script>
 
 <template>
@@ -17,10 +16,11 @@ const { data }: { data: Ref<CardContent[]> } = await useAsyncData(
     </h2>
     <div class="flex overflow-x-auto w-full h-[80vh] py-8 gap-[5vw] snap-mandatory snap-x">
       <template
-        v-for="(datum, index) in data"
-        :key="index"
+        v-for="datum in reversed"
+        :key="datum.title"
       >
         <SimpleCard
+          v-if="datum.card"
           :content="datum"
           :closable="false"
           class="grow shrink-0 basis-[80vw] h-full shadow-card first:ml-[10vw] last:mr-[10vw] snap-center"

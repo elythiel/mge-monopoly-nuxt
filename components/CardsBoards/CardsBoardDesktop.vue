@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import VueFeather from 'vue-feather'
-import type { Ref } from 'vue'
 import { ref } from 'vue'
-import { useAsyncData } from 'nuxt/app'
 import type { CardContent } from '~/types/types'
 import BoardSquareStart from '~/components/BoardSquares/BoardSquareStart.vue'
 import BoardSquareJail from '~/components/BoardSquares/BoardSquareJail.vue'
@@ -10,12 +8,9 @@ import BoardSquareParking from '~/components/BoardSquares/BoardSquareParking.vue
 import BoardSquarePoliceman from '~/components/BoardSquares/BoardSquarePoliceman.vue'
 import BoardSquare from '~/components/BoardSquares/BoardSquare.vue'
 
-const { data }: {
-  data: Ref<CardContent[]>
-} = await useAsyncData(
-  'cards-list',
-  () => queryContent('card').find(),
-)
+const props = defineProps<{
+  data: CardContent[]
+}>()
 
 const boardSquaresElements = ref<InstanceType<typeof BoardSquare>[]>([])
 const rotation = ref(0)
@@ -33,10 +28,10 @@ function openPrevCard(event, index) {
 }
 
 function getNextCard(index): InstanceType<typeof BoardSquare> {
-  if (index > data.value.length - 1) {
+  if (index > props.data.length - 1) {
     return getNextCard(-1)
   }
-  if (data.value[index + 1]?.card) {
+  if (props.data[index + 1]?.card) {
     return boardSquaresElements.value[index + 1]
   }
 
@@ -45,9 +40,9 @@ function getNextCard(index): InstanceType<typeof BoardSquare> {
 
 function getPrevCard(index): InstanceType<typeof BoardSquare> {
   if (index < 0) {
-    return getPrevCard(data.value.length)
+    return getPrevCard(props.data.length)
   }
-  if (data.value[index - 1]?.card) {
+  if (props.data[index - 1]?.card) {
     return boardSquaresElements.value[index - 1]
   }
 

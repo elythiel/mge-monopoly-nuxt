@@ -8,15 +8,11 @@ const config = {
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@nuxt/eslint',
-    '@nuxtjs/device',
   ],
   eslint: {
     config: {
       stylistic: true,
     },
-  },
-  device: {
-    refreshOnResize: true,
   },
 }
 

@@ -1,15 +1,19 @@
 <script lang="ts" setup>
-import { nextTick, onMounted, ref } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import PerfectScrollbar from 'perfect-scrollbar'
+import { useBreakpoints } from '~/composables/breakpoints'
 
 const element = ref<HTMLDivElement>()
 const scrollbar = ref<PerfectScrollbar>()
-const { isMobile } = useDevice()
+const { isSm } = useBreakpoints()
 
 onMounted(loadScrollBar)
+onBeforeUnmount(() => {
+  scrollbar.value?.destroy()
+})
 
 async function loadScrollBar() {
-  if (!isMobile && !scrollbar.value) {
+  if (!isSm && !scrollbar.value) {
     scrollbar.value = new PerfectScrollbar(element.value as HTMLElement, {
       wheelPropagation: false,
     })
@@ -23,7 +27,7 @@ async function loadScrollBar() {
   <div
     ref="element"
     class="relative"
-    :class="{ 'overflow-y-auto': isMobile }"
+    :class="{ 'overflow-y-auto': isSm }"
   >
     <slot />
   </div>

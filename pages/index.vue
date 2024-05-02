@@ -3,6 +3,9 @@ import IndexHeader from '~/components/IndexHeader'
 import BoardContainer from '~/components/BoardContainer'
 import ContactForm from '~/components/ContactForm'
 import MobileCardContainer from '~/components/MobileCardContainer.vue'
+import { useBreakpoints } from '~/composables/breakpoints'
+
+const { isSm } = useBreakpoints()
 </script>
 
 <template>
@@ -10,7 +13,7 @@ import MobileCardContainer from '~/components/MobileCardContainer.vue'
     <IndexHeader id="header" />
     <div id="monopoly">
       <BoardContainer
-        v-if="!$device.isMobile"
+        v-if="!isSm"
         class="pt-20 pb-12 mb-4 lg:pt-24 lg:pb-28 lg:mb-12 2xl:pt-40 2xl:pb-28"
       />
       <MobileCardContainer

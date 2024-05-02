@@ -3,8 +3,12 @@ import VueFeather from 'vue-feather'
 import type { Ref } from 'vue'
 import { ref } from 'vue'
 import { useAsyncData } from 'nuxt/app'
-import BoardCase from '@/components/Board/BoardCase'
 import type { CardContent } from '~/types/types'
+import BoardSquareStart from '~/components/BoardSquares/BoardSquareStart.vue'
+import BoardSquareJail from '~/components/BoardSquares/BoardSquareJail.vue'
+import BoardSquareParking from '~/components/BoardSquares/BoardSquareParking.vue'
+import BoardSquarePoliceman from '~/components/BoardSquares/BoardSquarePoliceman.vue'
+import BoardSquare from '~/components/BoardSquares/BoardSquare.vue'
 
 const { data }: {
   data: Ref<CardContent[]>
@@ -12,38 +16,39 @@ const { data }: {
   'cards-list',
   () => queryContent('card').find(),
 )
-const boardCaseElements = ref<InstanceType<typeof BoardCase>[]>([])
+
+const boardSquaresElements = ref<InstanceType<typeof BoardSquare>[]>([])
 const rotation = ref(0)
 
 function openNextCard(event, index) {
-  if (boardCaseElements.value[index]) {
-    boardCaseElements.value[index].closeCard()
+  if (boardSquaresElements.value[index]) {
+    boardSquaresElements.value[index].closeCard()
     getNextCard(index).openCard(event)
   }
 }
 
 function openPrevCard(event, index) {
-  boardCaseElements.value[index].closeCard()
+  boardSquaresElements.value[index].closeCard()
   getPrevCard(index).openCard(event)
 }
 
-function getNextCard(index): InstanceType<typeof BoardCase> {
+function getNextCard(index): InstanceType<typeof BoardSquare> {
   if (index > data.value.length - 1) {
     return getNextCard(-1)
   }
   if (data.value[index + 1]?.card) {
-    return boardCaseElements.value[index + 1]
+    return boardSquaresElements.value[index + 1]
   }
 
   return getNextCard(index + 1)
 }
 
-function getPrevCard(index): InstanceType<typeof BoardCase> {
+function getPrevCard(index): InstanceType<typeof BoardSquare> {
   if (index < 0) {
     return getPrevCard(data.value.length)
   }
   if (data.value[index - 1]?.card) {
-    return boardCaseElements.value[index - 1]
+    return boardSquaresElements.value[index - 1]
   }
 
   return getPrevCard(index - 1)
@@ -55,7 +60,7 @@ function rotateBoard(direction) {
 </script>
 
 <template>
-  <div class="overflow-hidden relative bg-white pt-20 pb-12 mb-4 lg:pt-24 lg:pb-28 lg:mb-12 2xl:pt-40 2xl:pb-28">
+  <div class="overflow-hidden relative bg-white">
     <div class="flex justify-between w-[90vw] mx-auto items-center mb-8 2xl:mb-12">
       <button
         type="button"
@@ -93,22 +98,22 @@ function rotateBoard(direction) {
         v-for="(caseData, index) in data"
         :key="index"
       >
-        <BoardCase
-          ref="boardCaseElements"
+        <BoardSquare
+          ref="boardSquaresElements"
           :data="caseData"
-          class="board-case bg-white"
+          class="board-square bg-white"
           @next-card="(event) => openNextCard(event, index)"
           @prev-card="(event) => openPrevCard(event, index)"
         />
       </template>
       <!-- CORNER SQUARES -->
-      <BoardStart class="bg-white" />
-      <BoardJail class="bg-white" />
-      <BoardParking class="bg-white" />
-      <BoardPoliceman class="bg-white" />
+      <BoardSquareStart class="bg-white" />
+      <BoardSquareJail class="bg-white" />
+      <BoardSquareParking class="bg-white" />
+      <BoardSquarePoliceman class="bg-white" />
       <!-- CENTER SQUARE START -->
       <div
-        class="board-case-center col-span-9 bg-transparent row-span-9 overflow-hidden w-full h-full transition-transform duration-500"
+        class="board-square-center col-span-9 bg-transparent row-span-9 overflow-hidden w-full h-full transition-transform duration-500"
         :style="`transform: rotate(${-rotation * 90}deg)`"
       >
         <div class="font-bold flex flex-col items-center justify-center -rotate-45 w-full h-full">
@@ -125,11 +130,11 @@ function rotateBoard(direction) {
 </template>
 
 <style scoped>
-.board-case-center {
+.board-square-center {
   grid-area: 2 / 2 / 11 / 11 !important;
 }
 
-.board-case {
+.board-square {
   /* bottom row */
 
   &:nth-child(1) {

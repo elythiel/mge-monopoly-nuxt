@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import type { CardContent } from '~/types/types'
+import ClosableCard from '~/components/Cards/ClosableCard.vue'
 
 const props = defineProps<{
   data: CardContent
@@ -40,7 +41,7 @@ function getImageSize(image) {
 
 <template>
   <div
-    class="board-case shadow-board-sm lg:shadow-board transition-all leading-1.15 transition-transform flex flex-col z-10"
+    class="board-square shadow-board-sm lg:shadow-board transition-all leading-1.15 transition-transform flex flex-col z-10"
     :class="{ 'cursor-pointer hover:scale-300 lg:hover:scale-110 hover:z-20': data.card }"
     @click="data.card ? openCard($event) : null"
   >
@@ -69,7 +70,7 @@ function getImageSize(image) {
       >
     </div>
     <Teleport to="body">
-      <BoardCard
+      <ClosableCard
         v-if="data.card"
         ref="cardComponent"
         :data="data"
@@ -81,7 +82,7 @@ function getImageSize(image) {
 </template>
 
 <style scoped>
-.board-case:deep(small) {
+.board-square:deep(small) {
   @apply block;
   font-size: 0.6em;
 }

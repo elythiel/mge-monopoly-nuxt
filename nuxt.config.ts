@@ -8,7 +8,7 @@ const config = {
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@nuxt/eslint',
-    '@nuxtjs/device'
+    '@nuxtjs/device',
   ],
   eslint: {
     config: {
@@ -16,8 +16,8 @@ const config = {
     },
   },
   device: {
-    refreshOnResize: true
-  }
+    refreshOnResize: true,
+  },
 }
 
 export default config

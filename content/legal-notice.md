@@ -12,8 +12,8 @@ Webmaster : Morgane Gervasoni – morgane.gervasoni@gmail.com
 
 ## Hébergement
 
-OVH – 2 rue Kellermann 59100 Roubaix – France –
-[www.ovh.com](https://www.ovh.com)
+Netlify
+[www.netlify.com](https://www.netlify.com/)
 
 ## Services
 

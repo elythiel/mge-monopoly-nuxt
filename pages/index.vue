@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import IndexHeader from '../components/IndexHeader'
-import BoardContainer from '../components/BoardContainer'
-import ContactForm from '../components/ContactForm'
+import IndexHeader from '~/components/IndexHeader'
+import ContactForm from '~/components/ContactForm'
+import CardsBoard from '~/components/CardsBoards/CardsBoard.vue'
 </script>
 
 <template>
   <div>
     <IndexHeader id="header" />
-    <BoardContainer id="monopoly" />
+    <CardsBoard id="monopoly" />
     <div
       id="curriculum-pdf"
       class="my-8 2xl:my-10"
@@ -21,6 +21,9 @@ import ContactForm from '../components/ContactForm'
         >ici</a> !
       </p>
     </div>
-    <ContactForm id="contact" />
+    <ContactForm
+      id="contact"
+      class="pt-20 pb-12 mb-4 lg:pt-24 lg:pb-28 lg:mb-12 2xl:pt-40 2xl:pb-28"
+    />
   </div>
 </template>

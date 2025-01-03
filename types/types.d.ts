@@ -7,4 +7,9 @@ export interface CardContent {
   footer?: string
   period: string
   card?: boolean
+  image?: {
+    name: string
+    alt: string
+    size: string
+  }
 }

@@ -45,7 +45,7 @@ function send(event) {
 <template>
   <div
     ref="mainElement"
-    class="relative shadow-3 bg-white pt-20 pb-12 mb-4 lg:pt-24 lg:pb-28 lg:mb-12 2xl:pt-28 2xl:pb-28 lg:bg-contact lg:bg-no-repeat"
+    class="relative shadow-3 bg-white lg:bg-contact lg:bg-no-repeat"
   >
     <div class="relative z-10">
       <h2 class="font-avante-titul-inline text-center text-4xl lg:text-6xl mb-8 2xl:text-7xl 2xl:mb-12">

@@ -9,6 +9,7 @@ import Plane from '~/assets/images/plane.svg'
     title="Envoyer"
   >
     <Plane class="h-12 rotate-8 2xl:h-16" :font-controlled="false" />
+    <span class="sr-only">Envoyer</span>
   </button>
 </template>
 

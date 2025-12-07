@@ -72,6 +72,8 @@ function send({ target }: SubmitEvent) {
           name="contact"
           method="POST"
           class="flex origin-top flex-col gap-5"
+          netlify-honeypot="bot-field"
+          data-netlify="true"
           data-netlify-recaptcha="true"
           @submit.prevent="send"
         >
@@ -79,7 +81,7 @@ function send({ target }: SubmitEvent) {
           <p class="hidden">
             <label>
               Don’t fill this out:
-              <input name="bot-field" />
+              <input name="bot-field" type="text" />
             </label>
           </p>
 

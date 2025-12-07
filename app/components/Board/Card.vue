@@ -120,7 +120,7 @@ function bgLeave(el: Element, onComplete: () => void) {
         class="card-wrapper pointer-events-none fixed z-50 flex h-full w-full origin-top-left items-center justify-center font-josefin"
       >
         <div
-          class="pointer-events-auto relative h-[90vh] w-[80vw] max-w-xl rounded-lg bg-white p-3 shadow-card md:w-[60vw] 2xl:p-4 portrait:h-[80vh]"
+          class="pointer-events-auto relative h-[90vh] w-[80vw] landscape:max-w-xl rounded-lg bg-white p-3 shadow-card md:w-[60vw] 2xl:p-4 lg:portrait:w-[80vw] portrait:h-[60vh]"
         >
           <div
             class="relative flex h-full flex-col border-2 border-black p-4 2xl:p-5"

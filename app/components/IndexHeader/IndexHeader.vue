@@ -70,37 +70,37 @@ function animate() {
 
 <template>
   <div
-    class="relative flex min-h-screen w-full flex-col overflow-x-hidden pt-20 lg:pt-0"
+    class="relative flex min-h-screen w-full flex-col overflow-x-hidden pt-20 lg:landscape:pt-0"
   >
     <div
-      class="mb-0 mt-auto flex flex-col items-center justify-center lg:mb-12 lg:flex-row 2xl:mb-16"
+      class="mb-0 mt-auto flex flex-col items-center justify-center lg:mb-12 lg:landscape:flex-row 2xl:mb-16"
     >
       <div
-        class="my-4 w-full text-center lg:mb-8 lg:w-1/2 lg:text-right 2xl:mb-12 2xl:mt-6"
+        class="my-4 w-full text-center lg:mb-8 lg:landscape:w-1/2 lg:landscape:text-right lg:portrait:mb-12 2xl:mb-12 2xl:mt-6"
       >
         <h1
-          class="pb-2 font-avante-titul-inline text-4xl text-white lg:pb-4 lg:text-6xl 2xl:pb-6 2xl:text-8xl"
+          class="pb-2 font-avante-titul-inline text-4xl text-white lg:pb-4 lg:text-6xl 2xl:pb-6 lg:portrait:text-8xl 2xl:text-8xl"
         >
           <span ref="firstName" class="block opacity-0">Morgane</span>
           <span ref="lastName" class="block opacity-0">Gervasoni</span>
         </h1>
         <h2
           ref="job"
-          class="text-2xl uppercase text-gray-600 opacity-0 lg:text-3xl 2xl:text-5xl"
+          class="text-2xl uppercase text-gray-600 opacity-0 lg:text-3xl lg:portrait:text-5xl 2xl:text-5xl"
         >
           Product Owner
         </h2>
       </div>
       <div
         ref="separator"
-        class="mx-24 h-1 w-1/2 origin-top bg-white opacity-0 lg:h-auto lg:w-1 lg:self-stretch 2xl:mx-32"
+        class="mx-24 h-1 w-1/2 origin-top bg-white opacity-0 lg:landscape:h-auto lg:landscape:w-1 lg:landscape:self-stretch 2xl:landscape:mx-32"
       />
       <div
         ref="description"
-        class="mb-8 mt-4 w-1/2 text-center text-base leading-normal text-white opacity-0 lg:text-left lg:text-2xl 2xl:mb-12 2xl:mt-6 2xl:text-3xl 2xl:leading-relaxed"
+        class="mb-8 mt-4 w-1/2 text-center text-base leading-normal text-white opacity-0 lg:landscape:text-left lg:text-2xl 2xl:mb-12 2xl:mt-6 lg:portrait:mt-10 lg:portrait:text-3xl 2xl:text-3xl 2xl:leading-relaxed"
       >
         <p class="mb-2 lg:mb-8 2xl:mb-12">Envie de me connaître ?</p>
-        <p class="lg:pr-48 2xl:pr-80">
+        <p class="lg:landscape:pr-48 2xl:landscape:r-80">
           C'est simple, il suffit de jouer sur mon plateau ! Les cartes
           <IndexHeaderColorPrisme text="missions" />
           sont cliquables pour avoir plus de détails ;)
@@ -111,10 +111,10 @@ function animate() {
     <a
       ref="discover"
       href="/#monopoly"
-      class="discover mx-auto mb-auto text-center text-base leading-tight opacity-0 lg:mb-0 lg:text-xl 2xl:text-2xl"
+      class="discover mx-auto mb-auto text-center text-base leading-tight opacity-0 lg:landscape:mb-0 lg:text-xl lg:portrait:text-2xl 2xl:text-2xl"
     >
       <div
-        class="flex h-36 w-36 items-center justify-center rounded-full border-3 border-white p-1 transition-shadow duration-500 lg:h-36 lg:w-36 2xl:h-44 2xl:w-44"
+        class="flex h-36 w-36 items-center justify-center rounded-full border-3 border-white p-1 transition-shadow duration-500 lg:h-36 lg:w-36 lg:portrait:h-44 lg:portrait:w-44 2xl:h-44 2xl:w-44"
       >
         <div
           class="flex h-full w-full items-center justify-center rounded-full bg-white"

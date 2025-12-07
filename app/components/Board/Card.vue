@@ -141,12 +141,12 @@ function bgLeave(el: Element, onComplete: () => void) {
             >
               <span
                 v-if="data.duration"
-                class="absolute -left-4 -top-4 flex h-12 w-12 items-center justify-center rounded-full border-2 border-black bg-white p-1 text-center text-sm !leading-none lg:text-xs 2xl:text-base"
+                class="absolute -left-4 -top-4 flex h-12 w-12 items-center justify-center rounded-full border-2 border-black bg-white p-1 text-center text-xs !leading-none 2xl:text-base"
               >
                 <span>{{ data.duration }}</span>
               </span>
               <h2
-                class="card-header px-8 py-3 text-center text-lg font-bold uppercase xl:py-5 2xl:px-12"
+                class="card-header px-8 py-3 text-center md:text-lg font-bold uppercase xl:py-5 2xl:px-12"
                 v-html="data.header ?? data.title"
               />
               <span
@@ -157,12 +157,16 @@ function bgLeave(el: Element, onComplete: () => void) {
               </span>
             </div>
             <BoardCardContent :data="data" />
-            <span
-              v-if="data.footer || data.period"
-              class="absolute -bottom-[0.9rem] left-1/2 -translate-x-1/2 bg-white px-2 text-sm 2xl:text-base"
+            <div
+              class="flex items-center justify-center absolute -bottom-3 inset-x-0"
             >
-              {{ data.footer ?? data.period }}
-            </span>
+              <span
+                v-if="data.footer || data.period"
+                class="whitespace-nowrap bg-white px-2 text-sm md:text-base"
+              >
+                {{ data.footer ?? data.period }}
+              </span>
+            </div>
           </div>
           <button
             type="button"

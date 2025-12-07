@@ -10,7 +10,7 @@ const modelValue = defineModel<number>({ required: true })
 <template>
   <button
     type="button"
-    class="flex items-center justify-center p-2 md:text-2xl"
+    class="hidden md:flex items-center justify-center p-2 md:text-2xl"
     :title="`Tourner le plateau en sens ${direction === 'left' ? 'anti-horaire' : 'horaire'}`"
     @click="modelValue += direction === 'left' ? -1 : 1"
   >

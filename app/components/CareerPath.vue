@@ -35,23 +35,27 @@ function findPrevCard(index: number) {
   <div
     class="relative mb-4 overflow-hidden bg-white pb-24 pt-20 lg:mb-12 lg:pt-24 2xl:pt-40"
   >
-    <div
-      class="mx-auto mb-8 flex w-[90vw] items-center justify-between 2xl:mb-12"
-    >
-      <BoardContainerArrow v-model="rotation" direction="left" />
+    <div class="mx-auto mb-8 flex w-[90vw] items-center 2xl:mb-12">
+      <ClientOnly>
+        <BoardContainerArrow v-model="rotation" direction="left" class="" />
+      </ClientOnly>
       <h2
-        class="text-center font-avante-titul-inline text-2xl md:text-4xl lg:text-6xl 2xl:text-7xl"
+        class="grow text-center font-avante-titul-inline text-2xl md:text-4xl lg:text-6xl 2xl:text-7xl"
       >
         Mon parcours
       </h2>
-      <BoardContainerArrow v-model="rotation" direction="right" />
+      <ClientOnly>
+        <BoardContainerArrow v-model="rotation" direction="right" />
+      </ClientOnly>
     </div>
     <template v-if="data">
-      <BoardContainerDesktop
-        :rotation="rotation"
-        :data="data"
-        @click:case="($event, id) => findCard(id)?.open($event)"
-      />
+      <ClientOnly>
+        <BoardContainer
+          :rotation="rotation"
+          :data="data"
+          @click:case="($event, id) => findCard(id)?.open($event)"
+        />
+      </ClientOnly>
       <template v-for="(item, index) in data">
         <BoardCard
           v-if="item.card"

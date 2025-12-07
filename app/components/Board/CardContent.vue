@@ -27,7 +27,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="element" class="prose prose-base prose-card relative">
+  <div ref="element" class="prose prose-sm md:prose-base prose-card relative">
     <ClientOnly>
       <ContentRenderer :value="data" />
     </ClientOnly>

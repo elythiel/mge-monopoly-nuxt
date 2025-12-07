@@ -29,7 +29,7 @@ export default {
         3: '3px',
       },
       boxShadow: {
-        'board-sm': '0px 0px 0px 0.25px black inset, 0px 0px 0px 0.25px black',
+        'board-sm': '0px 0px 0px 0.5px black inset, 0px 0px 0px 0.5px black',
         board: '0 0 0 1px black inset, 0 0 0 1px black',
         card: '4px 2px 6px 3px rgba(0, 0, 0, 0.2)',
       },

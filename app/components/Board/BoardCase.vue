@@ -1,31 +1,10 @@
 <script lang="ts" setup>
 import type { BoardCollectionItem } from '@nuxt/content'
-import { useTemplateRef } from 'vue'
 import type { CardContentImage } from '~/types/types'
 
-const props = defineProps<{
+defineProps<{
   data: BoardCollectionItem
 }>()
-
-const cardComponent = useTemplateRef('cardComponent')
-
-defineExpose({ openCard })
-defineEmits<{
-  prevCard: [event: MouseEvent]
-  nextCard: [event: MouseEvent]
-}>()
-
-function openCard(event: MouseEvent, animation?: 'left' | 'right') {
-  if (props.data.card) {
-    cardComponent.value?.open(event, animation)
-  }
-}
-
-function closeCard(animation?: 'left' | 'right') {
-  if (props.data.card) {
-    cardComponent.value?.close(animation)
-  }
-}
 
 function getImageSize({ size }: CardContentImage) {
   switch (size) {
@@ -46,7 +25,6 @@ function getImageSize({ size }: CardContentImage) {
       'cursor-pointer hover:z-20 hover:scale-300 md:hover:scale-150 lg:hover:scale-110':
         data.card,
     }"
-    @click="data.card ? openCard($event) : null"
   >
     <div
       v-if="data.color"
@@ -71,23 +49,6 @@ function getImageSize({ size }: CardContentImage) {
         :alt="data.image.alt"
       />
     </div>
-    <BoardCard
-      v-if="data.card"
-      ref="cardComponent"
-      :data="data"
-      @next-card="
-        (event: MouseEvent) => {
-          closeCard('left')
-          $emit('nextCard', event)
-        }
-      "
-      @prev-card="
-        (event: MouseEvent) => {
-          closeCard('right')
-          $emit('prevCard', event)
-        }
-      "
-    />
   </div>
 </template>
 

@@ -9,8 +9,6 @@ const props = defineProps<{
 
 const cardComponent = useTemplateRef('cardComponent')
 
-const position = reactive({ x: 0, y: 0 })
-
 defineExpose({ openCard })
 defineEmits<{
   prevCard: [event: MouseEvent]
@@ -45,7 +43,8 @@ function getImageSize({ size }: CardContentImage) {
   <div
     class="board-case leading-1.15 z-10 flex flex-col shadow-board-sm transition-all lg:shadow-board"
     :class="{
-      'cursor-pointer hover:z-20 hover:scale-300 lg:hover:scale-110': data.card,
+      'cursor-pointer hover:z-20 hover:scale-300 md:hover:scale-150 lg:hover:scale-110':
+        data.card,
     }"
     @click="data.card ? openCard($event) : null"
   >
@@ -72,26 +71,23 @@ function getImageSize({ size }: CardContentImage) {
         :alt="data.image.alt"
       />
     </div>
-    <Teleport to="body">
-      <BoardCard
-        v-if="data.card"
-        ref="cardComponent"
-        :data="data"
-        :position="position"
-        @next-card="
-          (event: MouseEvent) => {
-            closeCard('left')
-            $emit('nextCard', event)
-          }
-        "
-        @prev-card="
-          (event: MouseEvent) => {
-            closeCard('right')
-            $emit('prevCard', event)
-          }
-        "
-      />
-    </Teleport>
+    <BoardCard
+      v-if="data.card"
+      ref="cardComponent"
+      :data="data"
+      @next-card="
+        (event: MouseEvent) => {
+          closeCard('left')
+          $emit('nextCard', event)
+        }
+      "
+      @prev-card="
+        (event: MouseEvent) => {
+          closeCard('right')
+          $emit('prevCard', event)
+        }
+      "
+    />
   </div>
 </template>
 

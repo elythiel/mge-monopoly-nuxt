@@ -1,104 +1,105 @@
 <script lang="ts" setup>
-import VueFeather from 'vue-feather'
-import type { Ref } from 'vue'
-import { ref } from 'vue'
+import BoardCase from './Board/BoardCase.vue'
+import { RotateCcw, RotateCw } from 'lucide-vue-next'
 import { useAsyncData } from 'nuxt/app'
-import BoardCase from '@/components/Board/BoardCase'
-import type { CardContent } from '~/types/types'
+import { ref, useTemplateRef } from 'vue'
 
-const { data }: {
-  data: Ref<CardContent[]>
-} = await useAsyncData(
-  'cards-list',
-  () => queryContent('card').find(),
+const { data } = await useAsyncData(() =>
+  queryCollection('board').order('id', 'ASC').all(),
 )
-const boardCaseElements = ref<typeof BoardCase[]>([])
+
+const boardCaseElements = useTemplateRef('boardCaseElements')
 const rotation = ref(0)
 
-function openNextCard(event, index) {
-  if (boardCaseElements.value[index]) {
-    boardCaseElements.value[index].closeCard()
-    getNextCard(index).openCard(event)
+function openNextCard(event: MouseEvent, index: number) {
+  if (boardCaseElements.value && boardCaseElements.value[index]) {
+    getNextCard(index)?.openCard(event, 'right')
   }
 }
 
-function openPrevCard(event, index) {
-  boardCaseElements.value[index].closeCard()
-  getPrevCard(index).openCard(event)
+function openPrevCard(event: MouseEvent, index: number) {
+  if (boardCaseElements.value && boardCaseElements.value[index]) {
+    getPrevCard(index)?.openCard(event, 'left')
+  }
 }
 
-function getNextCard(index): typeof BoardCase {
-  if (index > data.value.length - 1) {
+function getNextCard(index: number) {
+  if (!data.value || !boardCaseElements.value) {
+    return null
+  }
+
+  if (index > (data.value.length ?? 0) - 1) {
     return getNextCard(-1)
   }
+
   if (data.value[index + 1]?.card) {
-    return boardCaseElements.value[index + 1]
+    return boardCaseElements.value[index + 1] ?? null
   }
 
   return getNextCard(index + 1)
 }
 
-function getPrevCard(index) {
+function getPrevCard(index: number) {
+  if (!data.value || !boardCaseElements.value) {
+    return null
+  }
+
   if (index < 0) {
     return getPrevCard(data.value.length)
   }
+
   if (data.value[index - 1]?.card) {
-    return boardCaseElements.value[index - 1]
+    return boardCaseElements.value[index - 1] ?? null
   }
 
   return getPrevCard(index - 1)
 }
 
-function rotateBoard(direction) {
+function rotateBoard(direction: number) {
   rotation.value = rotation.value + direction
 }
 </script>
 
 <template>
-  <div class="overflow-hidden relative bg-white pt-20 pb-12 mb-4 lg:pt-24 lg:pb-28 lg:mb-12 2xl:pt-40 2xl:pb-28">
-    <div class="flex justify-between w-[90vw] mx-auto items-center mb-8 2xl:mb-12">
+  <div
+    class="relative mb-4 overflow-hidden bg-white pb-12 pt-20 lg:mb-12 lg:pb-28 lg:pt-24 2xl:pb-28 2xl:pt-40"
+  >
+    <div
+      class="mx-auto mb-8 flex w-[90vw] items-center justify-between 2xl:mb-12"
+    >
       <button
         type="button"
-        class="p-2 md:text-2xl flex items-center justify-center"
-        title="Tourner le plateau"
+        class="flex items-center justify-center p-2 md:text-2xl"
+        title="Tourner le plateau en sens anti-horaire"
         @click="rotateBoard(-1)"
       >
-        <vue-feather
-          type="rotate-ccw"
-          stroke-width="1"
-          size="2em"
-        />
+        <RotateCcw class="size-12 stroke-1" />
       </button>
-      <h2 class="font-avante-titul-inline text-center text-2xl md:text-4xl lg:text-6xl 2xl:text-7xl">
+      <h2
+        class="text-center font-avante-titul-inline text-2xl md:text-4xl lg:text-6xl 2xl:text-7xl"
+      >
         Mon parcours
       </h2>
       <button
         type="button"
-        class="p-2 md:text-2xl flex items-center justify-center"
-        title="Tourner le plateau"
+        class="flex items-center justify-center p-2 md:text-2xl"
+        title="Tourner le plateau en sens horaire"
         @click="rotateBoard(1)"
       >
-        <vue-feather
-          type="rotate-cw"
-          stroke-width="1"
-          size="2em"
-        />
+        <RotateCw class="size-12 stroke-1" />
       </button>
     </div>
     <div
       :style="`transform: rotate(${rotation * 90}deg)`"
-      class="board-grid font-josefin w-[90vw] h-[90vw] mx-auto text-[1vw] lg:text-[0.85vw] grid grid-cols-board grid-rows-board relative transition-transform duration-500"
+      class="board-grid relative mx-auto grid h-[90vw] w-[90vw] grid-cols-board grid-rows-board font-josefin text-[1vw] transition-transform duration-500 lg:text-[0.85vw]"
     >
-      <template
-        v-for="(caseData, index) in data"
-        :key="index"
-      >
+      <template v-for="(caseData, index) in data" :key="index">
         <BoardCase
           ref="boardCaseElements"
           :data="caseData"
           class="board-case bg-white"
-          @next-card="(event) => openNextCard(event, index)"
-          @prev-card="(event) => openPrevCard(event, index)"
+          @next-card="openNextCard($event, index)"
+          @prev-card="openPrevCard($event, index)"
         />
       </template>
       <!-- CORNER SQUARES -->
@@ -108,14 +109,18 @@ function rotateBoard(direction) {
       <BoardPoliceman class="bg-white" />
       <!-- CENTER SQUARE START -->
       <div
-        class="board-case-center col-span-9 bg-transparent row-span-9 overflow-hidden w-full h-full transition-transform duration-500"
+        class="board-case-center col-span-9 row-span-9 h-full w-full overflow-hidden bg-transparent transition-transform duration-500"
         :style="`transform: rotate(${-rotation * 90}deg)`"
       >
-        <div class="font-bold flex flex-col items-center justify-center -rotate-45 w-full h-full">
-          <h2 class="normal-case text-xs lg:text-xl 2xl:text-2xl">
+        <div
+          class="flex h-full w-full -rotate-45 flex-col items-center justify-center font-bold"
+        >
+          <h2 class="text-xs normal-case lg:text-xl 2xl:text-2xl">
             Curriculum Vitae - Morgane
           </h2>
-          <h1 class="rounded lg:rounded-lg bg-mge-darkblue text-white text-3xl md:text-4xl lg:text-6xl px-4 pt-3 pb-1 lg:px-12 lg:pt-8 lg:pb-3 lg:text-8xl 2xl:px-16 2xl:pt-10 2xl:pb-4 2xl:text-9xl">
+          <h1
+            class="rounded bg-mge-darkblue px-4 pb-1 pt-3 text-3xl text-white md:text-4xl lg:rounded-lg lg:px-12 lg:pb-3 lg:pt-8 lg:text-8xl 2xl:px-16 2xl:pb-4 2xl:pt-10 2xl:text-9xl"
+          >
             GERVASONI
           </h1>
         </div>
@@ -284,8 +289,8 @@ function rotateBoard(direction) {
 
   /* columns elements */
 
-  &:nth-child(n+10):nth-child(-n+18),
-  &:nth-child(n+28):nth-child(-n+36) {
+  &:nth-child(n + 10):nth-child(-n + 18),
+  &:nth-child(n + 28):nth-child(-n + 36) {
     writing-mode: vertical-rl;
     text-orientation: mixed;
 
@@ -297,8 +302,8 @@ function rotateBoard(direction) {
   /* top row elements */
   /* right column elements */
 
-  &:nth-child(n+19):nth-child(-n+27),
-  &:nth-child(n+28):nth-child(-n+36) {
+  &:nth-child(n + 19):nth-child(-n + 27),
+  &:nth-child(n + 28):nth-child(-n + 36) {
     @apply rotate-180;
   }
 }

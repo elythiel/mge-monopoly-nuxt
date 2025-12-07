@@ -8,7 +8,7 @@ defineProps<{
 const state = ref(1)
 
 onMounted(() => {
-  setInterval(() => state.value = getNewState(), 2000)
+  setInterval(() => (state.value = getNewState()), 2000)
 })
 
 function getNewState(): number {
@@ -23,26 +23,27 @@ function getNewState(): number {
 <template>
   <span class="scene relative">
     <span class="invisible">{{ text }}</span>
-    <span
-      class="prisme absolute h-full left-0 top-0"
-      :class="`state-${state}`"
-    >
+    <span class="prisme absolute left-0 top-0 h-full" :class="`state-${state}`">
       <span
         v-show="state !== 3"
-        class="face-1 absolute leading-[initial] h-full text-mge-lightblue"
-      >{{ text }}</span>
+        class="face-1 absolute h-full leading-[initial] text-mge-lightblue"
+        >{{ text }}</span
+      >
       <span
         v-show="state !== 4"
-        class="face-2 absolute leading-[initial] h-full text-mge-yellow"
-      >{{ text }}</span>
+        class="face-2 absolute h-full leading-[initial] text-mge-yellow"
+        >{{ text }}</span
+      >
       <span
         v-show="state !== 1"
-        class="face-3 absolute leading-[initial] h-full text-mge-green"
-      >{{ text }}</span>
+        class="face-3 absolute h-full leading-[initial] text-mge-green"
+        >{{ text }}</span
+      >
       <span
         v-show="state !== 2"
-        class="face-4 absolute leading-[initial] h-full text-mge-red"
-      >{{ text }}</span>
+        class="face-4 absolute h-full leading-[initial] text-mge-red"
+        >{{ text }}</span
+      >
     </span>
   </span>
 </template>

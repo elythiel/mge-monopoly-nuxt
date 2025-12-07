@@ -62,7 +62,7 @@ function rotateBoard(direction: number) {
 
 <template>
   <div
-    class="relative mb-4 overflow-hidden bg-white pb-12 pt-20 lg:mb-12 lg:pb-28 lg:pt-24 2xl:pb-28 2xl:pt-40"
+    class="relative mb-4 overflow-hidden bg-white pb-24 pt-20 lg:mb-12 lg:pt-24 2xl:pt-40"
   >
     <div
       class="mx-auto mb-8 flex w-[90vw] items-center justify-between 2xl:mb-12"
@@ -129,7 +129,7 @@ function rotateBoard(direction: number) {
   </div>
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .board-case-center {
   grid-area: 2 / 2 / 11 / 11 !important;
 }

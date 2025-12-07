@@ -8,16 +8,17 @@
 @tailwind utilities;
 
 @layer base {
-    @font-face {
-        font-family: "AvanteTitulInline";
-        src: url("../fonts/AvanteTitulInline.ttf") format("truetype");
-    }
+  @font-face {
+    font-family: 'AvanteTitulInline';
+    src: url('../fonts/AvanteTitulInline.ttf') format('truetype');
+    font-display: 'swap';
+  }
 
-    html {
-        @apply scroll-smooth text-[16px];
-    }
+  html {
+    @apply scroll-smooth text-[16px];
+  }
 
-    body {
-        @apply font-barlow text-mge-darkblue bg-mge-darkblue bg-no-repeat bg-fixed bg-body bg-[length:44vw];
-    }
+  body {
+    @apply bg-mge-darkblue bg-body bg-[length:44vw] bg-fixed bg-no-repeat font-sans text-mge-darkblue;
+  }
 }

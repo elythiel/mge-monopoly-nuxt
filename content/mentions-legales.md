@@ -1,3 +1,7 @@
+---
+title: "Mentions legales"
+---
+
 ## Éditeur
 
 Morgane Gervasoni – 21 rue Frédéric Chopin 44230 Saint Sébastien sur Loire – France – SIRET : 85025748600017

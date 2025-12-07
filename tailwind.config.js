@@ -1,13 +1,21 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+import typography from '@tailwindcss/typography'
 
-module.exports = {
-  content: [
-    './content/**/*.md',
-    './components/**/*.{js,vue,ts}',
-    './layouts/**/*.vue',
-    './pages/**/*.vue',
-    './plugins/**/*.{js,ts}',
-  ],
+export default {
+  content: {
+    files: [
+      // all directories and extensions will correspond to your Nuxt config
+      '{srcDir}/components/**/*.{vue,js,jsx,mjs,ts,tsx}',
+      '{srcDir}/layouts/**/*.{vue,js,jsx,mjs,ts,tsx}',
+      '{srcDir}/pages/**/*.{vue,js,jsx,mjs,ts,tsx}',
+      '{srcDir}/plugins/**/*.{js,ts,mjs}',
+      '{srcDir}/composables/**/*.{js,ts,mjs}',
+      '{srcDir}/utils/**/*.{js,ts,mjs}',
+      '{srcDir}/{A,a}pp.{vue,js,jsx,mjs,ts,tsx}',
+      '{srcDir}/{E,e}rror.{vue,js,jsx,mjs,ts,tsx}',
+      '{srcDir}/app.config.{js,ts,mjs}',
+      '{srcDir}/app/spa-loading-template.html',
+    ],
+  },
   safelist: [
     {
       pattern: /bg-mge-(\w)+/,
@@ -16,8 +24,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        body: 'url(\'/images/bg-dice.svg\')',
-        contact: 'url(\'/images/bg-pen.svg\')',
+        body: "url('/images/bg-dice.svg')",
+        contact: "url('/images/bg-pen.svg')",
       },
       backgroundPosition: {
         body: '69vw 30vh',
@@ -31,9 +39,8 @@ module.exports = {
       },
       boxShadow: {
         'board-sm': '0px 0px 0px 0.25px black inset, 0px 0px 0px 0.25px black',
-        // 'board-sm': '0px 0px 0px 0.25px black inset, 0px 0px 0px 0.25px black',
-        'board': '0 0 0 1px black inset, 0 0 0 1px black',
-        'card': '4px 2px 6px 3px rgba(0, 0, 0, 0.2)',
+        board: '0 0 0 1px black inset, 0 0 0 1px black',
+        card: '4px 2px 6px 3px rgba(0, 0, 0, 0.2)',
       },
       colors: {
         mge: {
@@ -50,9 +57,8 @@ module.exports = {
       },
       fontFamily: {
         'avante-titul-inline': ['AvanteTitulInline', 'serif'],
-        'sans': ['"Barlow Semi Condensed"', ...defaultTheme.fontFamily.sans],
-        'barlow': ['"Barlow Semi Condensed"', ...defaultTheme.fontFamily.sans],
-        'josefin': ['"Josefin Sans"', 'sans-serif'],
+        sans: '"Barlow Semi Condensed", Avenir, Helvetica, Arial, sans-serif',
+        josefin: '"Josefin Sans", sans-serif',
       },
       gridTemplateColumns: {
         board: '12.65% repeat(9, 1fr) 12.65%',
@@ -71,20 +77,20 @@ module.exports = {
       scale: {
         300: '3',
       },
-      typography: theme => ({
+      typography: (theme) => ({
         card: {
           css: {
-            'h3': {
+            h3: {
               textAlign: 'center',
             },
             'h3, h4, h5, h6': {
               fontWeight: theme('fontWeight.normal'),
               marginTop: 0,
             },
-            'p': {
+            p: {
               marginBottom: theme('spacing.2'),
             },
-            'li': {
+            li: {
               margin: 0,
             },
             'ul, ol': {
@@ -102,7 +108,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [typography],
 }

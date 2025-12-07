@@ -1,19 +1,12 @@
-const config = {
-  target: 'static',
-  css: [
-    '@/assets/css/styles.css',
-  ],
-  buildModules: ['@nuxt/typescript-build'],
+export default defineNuxtConfig({
+  css: ['@/assets/css/styles.css'],
   modules: [
     '@nuxt/content',
     '@nuxtjs/tailwindcss',
     '@nuxt/eslint',
+    'nuxt-svgo',
   ],
-  eslint: {
-    config: {
-      stylistic: true,
-    },
+  typescript: {
+    typeCheck: true,
   },
-}
-
-export default config
+})

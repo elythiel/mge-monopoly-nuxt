@@ -1,5 +1,5 @@
 ---
-title: "Mentions legales"
+title: Mentions legales
 ---
 
 ## Éditeur
@@ -21,7 +21,7 @@ Netlify
 
 ## Services
 
-Le site [morganegervasoni.fr](https://www.morganegervasoni.fr) a pour objet de fournir une information concernant 
+Le site [morganegervasoni.fr](https://www.morganegervasoni.fr) a pour objet de fournir une information concernant
 l’ensemble des activités de la société.
 
 Le propriétaire du site s’efforce de fournir sur le site
@@ -41,11 +41,11 @@ Morgane Gervasoni est propriétaire des droits de propriété intellectuelle ou 
 éléments accessibles sur le site, notamment les textes, images, graphismes, logo, icônes.
 
 Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site,
-quel que soit le moyen ou le procédé utilisé, est interdite, 
+quel que soit le moyen ou le procédé utilisé, est interdite,
 sauf autorisation écrite préalable à l’email : morgane.gervasoni@gmail.com.
 
 Toute exploitation non autorisée du site ou de l’un quelconque des éléments qu’il contient sera considérée comme
-constitutive d’une contrefaçon et poursuivie conformément aux dispositions des articles L.335-2 
+constitutive d’une contrefaçon et poursuivie conformément aux dispositions des articles L.335-2
 et suivants du Code de Propriété Intellectuelle.
 
 ## Établissement de liens hypertextes
@@ -102,7 +102,7 @@ par email : morgane.gervasoni@gmail.com ou en effectuant sa demande écrite et s
 accompagnée d’une copie du titre d’identité avec signature du titulaire de la pièce,
 en précisant l’adresse à laquelle la réponse doit être envoyée.
 
-Aucune information personnelle de l’utilisateur du site 
+Aucune information personnelle de l’utilisateur du site
 [morganegervasoni.fr](https://www.morganegervasoni.fr)
 n’est publiée à l’insu de l’utilisateur, échangée, transférée,
 cédée ou vendue sur un support quelconque à des tiers.

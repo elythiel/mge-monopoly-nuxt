@@ -1,14 +1,15 @@
 ---
-color: "red"
-title: "Titre de case"
-period: "2022"
-image.name: "ico-guitar.svg"
-image.alt: "Icone de guitare"
-image.size": "lg"
+color: red
+title: Titre de case
+period: 2022
+image:
+  name: ico-guitar.svg
+  alt: Icone de guitare
+  size: lg
 card: true
-location: "Paris"
-footer: "juillet 2022 - septembre 2022"
-duration: "3 mois"
+location: Paris
+footer: juillet 2022 - septembre 2022
+duration: 3 mois
 ---
 
 ### Titre de la carte

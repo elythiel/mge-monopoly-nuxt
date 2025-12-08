@@ -70,7 +70,7 @@ function animate() {
 
 <template>
   <div
-    class="relative flex min-h-screen w-full flex-col overflow-x-hidden pt-20 lg:landscape:pt-0"
+    class="relative flex min-h-screen w-full flex-col overflow-x-hidden pt-16 lg:pt-24"
   >
     <div
       class="mb-0 mt-auto flex flex-col items-center justify-center lg:mb-12 lg:landscape:flex-row 2xl:mb-16"

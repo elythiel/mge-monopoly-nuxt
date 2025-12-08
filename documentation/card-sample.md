@@ -12,6 +12,8 @@ footer: juillet 2022 - septembre 2022
 duration: 3 mois
 ---
 
+Ce contenu est écrit en markdown.
+
 ### Titre de la carte
 
 [Ce texte aura les classes suivantes]{.block.text-center}

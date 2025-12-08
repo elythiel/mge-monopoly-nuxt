@@ -9,8 +9,8 @@ defineProps<{
 }>()
 defineExpose({ open, close })
 defineEmits<{
-  prevCard: [event: MouseEvent]
-  nextCard: [event: MouseEvent]
+  'click:prev': [event: MouseEvent]
+  'click:next': [event: MouseEvent]
 }>()
 
 const isActive = ref(false)
@@ -100,7 +100,12 @@ function bgLeave(el: Element, onComplete: () => void) {
           type="button"
           class="fixed left-0 top-1/2 z-50 -translate-y-1/2 text-white lg:p-4 lg:text-2xl"
           title="Afficher la carte précédente"
-          @click="$emit('prevCard', $event)"
+          @click="
+            ($event) => {
+              close('right')
+              $emit('click:prev', $event)
+            }
+          "
         >
           <ChevronLeft class="size-12" />
         </button>
@@ -108,7 +113,12 @@ function bgLeave(el: Element, onComplete: () => void) {
           type="button"
           class="fixed right-0 top-1/2 z-50 -translate-y-1/2 text-white lg:p-4 lg:text-2xl"
           title="Afficher la carte suivante"
-          @click="$emit('nextCard', $event)"
+          @click="
+            ($event) => {
+              close('left')
+              $emit('click:next', $event)
+            }
+          "
         >
           <ChevronRight class="size-12" />
         </button>
@@ -131,12 +141,12 @@ function bgLeave(el: Element, onComplete: () => void) {
             >
               <span
                 v-if="data.duration"
-                class="absolute -left-4 -top-4 flex h-12 w-12 items-center justify-center rounded-full border-2 border-black bg-white p-1 text-center text-sm !leading-none lg:text-xs 2xl:text-base"
+                class="absolute -left-4 -top-4 flex h-12 w-12 items-center justify-center rounded-full border-2 border-black bg-white p-1 text-center text-xs !leading-none 2xl:text-base"
               >
                 <span>{{ data.duration }}</span>
               </span>
               <h2
-                class="card-header px-8 py-3 text-center text-lg font-bold uppercase xl:py-5 2xl:px-12"
+                class="card-header px-8 py-3 text-center md:text-lg font-bold uppercase xl:py-5 2xl:px-12"
                 v-html="data.header ?? data.title"
               />
               <span
@@ -147,12 +157,16 @@ function bgLeave(el: Element, onComplete: () => void) {
               </span>
             </div>
             <BoardCardContent :data="data" />
-            <span
-              v-if="data.footer || data.period"
-              class="absolute -bottom-[0.9rem] left-1/2 -translate-x-1/2 bg-white px-2 text-sm 2xl:text-base"
+            <div
+              class="flex items-center justify-center absolute -bottom-3 inset-x-0"
             >
-              {{ data.footer ?? data.period }}
-            </span>
+              <span
+                v-if="data.footer || data.period"
+                class="whitespace-nowrap bg-white px-2 text-sm md:text-base"
+              >
+                {{ data.footer ?? data.period }}
+              </span>
+            </div>
           </div>
           <button
             type="button"

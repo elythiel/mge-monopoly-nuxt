@@ -3,7 +3,7 @@
 <template>
   <div>
     <IndexHeader id="header" />
-    <BoardContainer id="monopoly" />
+    <CareerPath id="monopoly" />
     <div id="curriculum-pdf" class="my-8 2xl:my-10">
       <p class="text-center text-base text-white lg:text-2xl">
         Un CV plus standard ? C'est par

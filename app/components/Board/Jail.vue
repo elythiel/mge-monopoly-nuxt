@@ -4,7 +4,7 @@ import Tools from '~/assets/images/tools.svg'
 
 <template>
   <div
-    class="board-corner grid-board-jail relative grid w-full grid-cols-[20%_1fr] grid-rows-[80%_1fr] items-center justify-end overflow-hidden shadow-board-sm transition-all lg:shadow-board"
+    class="relative grid grid-cols-[20%_1fr] grid-rows-[80%_1fr] items-center justify-end overflow-hidden border-2 border-black md:border-none md:shadow-board-sm transition-all lg:shadow-board"
   >
     <div
       class="col-start-2 flex items-center justify-center place-self-stretch overflow-hidden bg-mge-orange shadow-board-sm lg:shadow-board"
@@ -32,9 +32,5 @@ import Tools from '~/assets/images/tools.svg'
 
 .bottom-zone {
   grid-area: 2 / 2 / 3 / 3;
-}
-
-.board-corner {
-  grid-area: 11 / 1 / 12 / 2 !important;
 }
 </style>
